@@ -1,42 +1,105 @@
 {
-  "name": "DCATlinkML",
-  "description": "test",
-  "title": "DCATlinkML",
-  "see_also": [
-    "https://HendrikBorgelt.github.io/DCATlinkML"
-  ],
-  "id": "https://w3id.org/HendrikBorgelt/DCATlinkML",
+  "name": "DCATap_LinkML_Template",
+  "id": "https://ndfi4cat.de/linkml/tests/DCATap",
   "imports": [
     "linkml:types"
   ],
-  "license": "MIT",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
   "prefixes": [
-    {
-      "prefix_prefix": "dcatlinkml",
-      "prefix_reference": "https://w3id.org/HendrikBorgelt/DCATlinkML/"
-    },
     {
       "prefix_prefix": "linkml",
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
-      "prefix_prefix": "biolink",
-      "prefix_reference": "https://w3id.org/biolink/"
+      "prefix_prefix": "DCATap_LinkML_Template_from_NFDI4Cat",
+      "prefix_reference": "https://ndfi4cat.de/linkml/tests/DCATap"
+    },
+    {
+      "prefix_prefix": "foaf",
+      "prefix_reference": "http://xmlns.com/foaf/0.1/"
+    },
+    {
+      "prefix_prefix": "rdf",
+      "prefix_reference": "http://www.w3.org/1999/02/22-rdf-syntax-ns"
+    },
+    {
+      "prefix_prefix": "adms",
+      "prefix_reference": "http://www.w3.org/ns/adms"
+    },
+    {
+      "prefix_prefix": "cc",
+      "prefix_reference": "http://creativecommons.org/ns"
+    },
+    {
+      "prefix_prefix": "dc",
+      "prefix_reference": "http://purl.org/dc/elements/1.1/"
+    },
+    {
+      "prefix_prefix": "dcat",
+      "prefix_reference": "http://www.w3.org/ns/dcat#"
+    },
+    {
+      "prefix_prefix": "dct",
+      "prefix_reference": "http://purl.org/dc/terms/"
+    },
+    {
+      "prefix_prefix": "lcon",
+      "prefix_reference": "http://www.w3.org/ns/locn"
+    },
+    {
+      "prefix_prefix": "org",
+      "prefix_reference": "http://www.w3.org/ns/org"
+    },
+    {
+      "prefix_prefix": "owl",
+      "prefix_reference": "http://www.w3.org/2002/07/owl"
+    },
+    {
+      "prefix_prefix": "odrl",
+      "prefix_reference": "http://www.w3.org/ns/odrl/2/"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov"
+    },
+    {
+      "prefix_prefix": "rdfs",
+      "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
     },
     {
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
     },
     {
-      "prefix_prefix": "PATO",
-      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
+      "prefix_prefix": "sh",
+      "prefix_reference": "http://www.w3.org/ns/shacl"
     },
     {
-      "prefix_prefix": "example",
-      "prefix_reference": "https://example.org/"
+      "prefix_prefix": "skos",
+      "prefix_reference": "http://www.w3.org/2004/02/skos/core#"
+    },
+    {
+      "prefix_prefix": "spdx",
+      "prefix_reference": "http://spdx.org/rdf/terms"
+    },
+    {
+      "prefix_prefix": "time",
+      "prefix_reference": "http://www.w3.org/2006/time"
+    },
+    {
+      "prefix_prefix": "vcard",
+      "prefix_reference": "http://www.w3.org/2006/vcard/ns"
+    },
+    {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    {
+      "prefix_prefix": "dcatap",
+      "prefix_reference": "http://data.europa.eu/r5r/"
     }
   ],
-  "default_prefix": "dcatlinkml",
+  "default_prefix": "https://ndfi4cat.de/linkml/tests/DCATap/",
   "default_range": "string",
   "types": [
     {
@@ -348,249 +411,3970 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/PersonStatus",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "permissible_values": [
-        {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
-        }
-      ]
-    }
-  ],
   "slots": [
     {
-      "name": "id",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/id",
-      "description": "A unique identifier for a thing",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
+      "name": "dcatDataset__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
       "mappings": [
-        "http://schema.org/identifier"
+        "http://www.w3.org/ns/dcat#description"
       ],
-      "slot_uri": "http://schema.org/identifier",
-      "identifier": true,
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "uriorcurie",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "name",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/name",
-      "description": "A human-readable name for a thing",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "mappings": [
-        "http://schema.org/name"
-      ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "description",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/description",
-      "description": "A human-readable description for a thing",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "mappings": [
-        "http://schema.org/description"
-      ],
-      "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
-      "owner": "Catalog",
-      "domain_of": [
-        "Catalog"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/birth_date",
-      "description": "Date on which a person is born",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "owner": "Catalog",
-      "domain_of": [
-        "Catalog"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/age_in_years",
-      "description": "Number of years since birth",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "slot_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/age_in_years",
-      "owner": "Catalog",
-      "domain_of": [
-        "Catalog"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/vital_status",
-      "description": "living or dead status",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "slot_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/vital_status",
-      "owner": "Catalog",
-      "domain_of": [
-        "Catalog"
-      ],
-      "range": "PersonStatus",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "catalogCollection__entries",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "slot_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/entries",
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
       "multivalued": true,
-      "alias": "entries",
-      "owner": "CatalogCollection",
+      "alias": "dct_description",
+      "owner": "DcatDataset",
       "domain_of": [
-        "CatalogCollection"
+        "DcatDataset"
       ],
-      "range": "Catalog",
+      "range": "RdfsLiteral",
+      "required": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "catalog_primary_email",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
+      "name": "dcatDataset__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
       "mappings": [
-        "http://schema.org/email"
+        "http://purl.org/dc/terms/title"
       ],
-      "is_a": "primary_email",
-      "domain": "Catalog",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
-      "owner": "Catalog",
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DcatDataset",
       "domain_of": [
-        "Catalog"
+        "DcatDataset"
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_contactPoint",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/contactPoint"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/contactPoint",
+      "multivalued": true,
+      "alias": "dct_contactPoint",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "VcardKind",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_keyword",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/keyword"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/keyword",
+      "multivalued": true,
+      "alias": "dct_keyword",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_theme",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/theme"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/theme",
+      "multivalued": true,
+      "alias": "dct_theme",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__adms_identifier",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/admsidentifier"
+      ],
+      "slot_uri": "http://www.w3.org/ns/admsidentifier",
+      "multivalued": true,
+      "alias": "adms_identifier",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "AdmsIdentifier",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__adms_versionNotes",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/admsversionNotes"
+      ],
+      "slot_uri": "http://www.w3.org/ns/admsversionNotes",
+      "multivalued": true,
+      "alias": "adms_versionNotes",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_landingPage",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#landingPage"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#landingPage",
+      "multivalued": true,
+      "alias": "dcat_landingPage",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "FoafDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_qualifiedRelation",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#qualifiedRelation"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#qualifiedRelation",
+      "multivalued": true,
+      "alias": "dcat_qualifiedRelation",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DcatRelationship",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_spatialResolutionInMeters",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#spatialResolutionInMeters"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#spatialResolutionInMeters",
+      "multivalued": true,
+      "alias": "dcat_spatialResolutionInMeters",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "XsdDecimal",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_temporalResolution",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#temporalResolution"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#temporalResolution",
+      "multivalued": true,
+      "alias": "dcat_temporalResolution",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "XsdDuration",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_version",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#version"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#version",
+      "multivalued": true,
+      "alias": "dcat_version",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_accessRights",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/accessRights"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/accessRights",
+      "alias": "dct_accessRights",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctFrequency",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_accuralPeriodicity",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/accuralPeriodicity"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/accuralPeriodicity",
+      "alias": "dct_accuralPeriodicity",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctFrequency",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_conformsTo",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/conformsTo"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/conformsTo",
+      "multivalued": true,
+      "alias": "dct_conformsTo",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctStandard",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_identifier",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/identifier"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/identifier",
+      "multivalued": true,
+      "alias": "dct_identifier",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_isReferencedBy",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/isReferencedBy"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/isReferencedBy",
+      "multivalued": true,
+      "alias": "dct_isReferencedBy",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsResource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_issued",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/issued"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/issued",
+      "alias": "dct_issued",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
       "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_language",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/language"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/language",
+      "multivalued": true,
+      "alias": "dct_language",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctLinguisticSystem",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_modified",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/modified"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/modified",
+      "alias": "dct_modified",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_provenance",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/provenance"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/provenance",
+      "multivalued": true,
+      "alias": "dct_provenance",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctProvenanceStatement",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_relation",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/relation",
+      "multivalued": true,
+      "alias": "dct_relation",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsResource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_type",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/type"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/type",
+      "alias": "dct_type",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__foaf_page",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://xmlns.com/foaf/0.1/page"
+      ],
+      "slot_uri": "http://xmlns.com/foaf/0.1/page",
+      "multivalued": true,
+      "alias": "foaf_page",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "FoafDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__owl_versionInfo",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/2002/07/owlversionInfo"
+      ],
+      "slot_uri": "http://www.w3.org/2002/07/owlversionInfo",
+      "alias": "owl_versionInfo",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__prov_qualifiedAttribution",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/provqualifiedAttribution"
+      ],
+      "slot_uri": "http://www.w3.org/ns/provqualifiedAttribution",
+      "multivalued": true,
+      "alias": "prov_qualifiedAttribution",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "ProvAttribution",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__prov_wasGeneratedBy",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/provwasGeneratedBy"
+      ],
+      "slot_uri": "http://www.w3.org/ns/provwasGeneratedBy",
+      "multivalued": true,
+      "alias": "prov_wasGeneratedBy",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "ProvActivity",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_themeTaxonomy",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#themeTaxonomy"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#themeTaxonomy",
+      "multivalued": true,
+      "alias": "dcat_themeTaxonomy",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_spatial",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/spatial"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/spatial",
+      "multivalued": true,
+      "alias": "dct_spatial",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctLocation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_temporal",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/temporal"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/temporal",
+      "multivalued": true,
+      "alias": "dct_temporal",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DctPeriodOfTime",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_publisher",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/publisher"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/publisher",
+      "alias": "dct_publisher",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "FoafAgent",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_distribution",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#distribution"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#distribution",
+      "multivalued": true,
+      "alias": "dcat_distribution",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DcatDistribution",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_hasVersion",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#hasVersion"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#hasVersion",
+      "multivalued": true,
+      "alias": "dcat_hasVersion",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DcatDataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dcat_isVersionOf",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#isVersionOf"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#isVersionOf",
+      "multivalued": true,
+      "alias": "dcat_isVersionOf",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DcatDataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__dct_source",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/source"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/source",
+      "multivalued": true,
+      "alias": "dct_source",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DcatDataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataset__adms_sample",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/admssample"
+      ],
+      "slot_uri": "http://www.w3.org/ns/admssample",
+      "multivalued": true,
+      "alias": "adms_sample",
+      "owner": "DcatDataset",
+      "domain_of": [
+        "DcatDataset"
+      ],
+      "range": "DcatDistribution",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_accessURL",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#accessURL"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#accessURL",
+      "multivalued": true,
+      "alias": "dcat_accessURL",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "RdfsResource",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcatap_availability",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://data.europa.eu/r5r/availability"
+      ],
+      "slot_uri": "http://data.europa.eu/r5r/availability",
+      "alias": "dcatap_availability",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#description"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
+      "multivalued": true,
+      "alias": "dct_description",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_format",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/format"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/format",
+      "alias": "dct_format",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctMediaTypeOrExtent",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__adms_status",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/admsstatus"
+      ],
+      "slot_uri": "http://www.w3.org/ns/admsstatus",
+      "alias": "adms_status",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_byteSize",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#byteSize"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#byteSize",
+      "alias": "dcat_byteSize",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "XsdNonNegativInteger",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_compressFormat",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#compressFormat"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#compressFormat",
+      "alias": "dcat_compressFormat",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctMediaType",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_downloadURL",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#downloadURL"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#downloadURL",
+      "multivalued": true,
+      "alias": "dcat_downloadURL",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "RdfsResource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_mediaType",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#compressFormat"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#compressFormat",
+      "alias": "dcat_mediaType",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctMediaType",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_packageFormat",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#packageFormat"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#packageFormat",
+      "alias": "dcat_packageFormat",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctMediaType",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_spatialResolutionInMeters",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#spatialResolutionInMeters"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#spatialResolutionInMeters",
+      "multivalued": true,
+      "alias": "dcat_spatialResolutionInMeters",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "XsdDecimal",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_temporalResolution",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#temporalResolution"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#temporalResolution",
+      "multivalued": true,
+      "alias": "dcat_temporalResolution",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "XsdDuration",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_conformsTo",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/conformsTo"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/conformsTo",
+      "multivalued": true,
+      "alias": "dct_conformsTo",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctStandard",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_issued",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/issued"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/issued",
+      "alias": "dct_issued",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_language",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/language"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/language",
+      "multivalued": true,
+      "alias": "dct_language",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctLinguisticSystem",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_modified",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/modified"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/modified",
+      "alias": "dct_modified",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_rights",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/rights"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/rights",
+      "alias": "dct_rights",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctRightsStatement",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__foaf_page",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://xmlns.com/foaf/0.1/page"
+      ],
+      "slot_uri": "http://xmlns.com/foaf/0.1/page",
+      "multivalued": true,
+      "alias": "foaf_page",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "FoafDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__odrl_hasPolicy",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/odrl/2/hasPolicy"
+      ],
+      "slot_uri": "http://www.w3.org/ns/odrl/2/hasPolicy",
+      "alias": "odrl_hasPolicy",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "OdrlHasPolicy",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__spdx_checksum",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://spdx.org/rdf/termschecksum"
+      ],
+      "slot_uri": "http://spdx.org/rdf/termschecksum",
+      "alias": "spdx_checksum",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "SpdxChecksum",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dct_license",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/license"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/license",
+      "alias": "dct_license",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DctLicenseDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDistribution__dcat_accessesService",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#accessesService"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#accessesService",
+      "multivalued": true,
+      "alias": "dcat_accessesService",
+      "owner": "DcatDistribution",
+      "domain_of": [
+        "DcatDistribution"
+      ],
+      "range": "DcatDataService",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#description"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
+      "multivalued": true,
+      "alias": "dct_description",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dcat_themeTaxonomy",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#themeTaxonomy"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#themeTaxonomy",
+      "multivalued": true,
+      "alias": "dcat_themeTaxonomy",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_issued",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/issued"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/issued",
+      "alias": "dct_issued",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_language",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/language"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/language",
+      "multivalued": true,
+      "alias": "dct_language",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DctLinguisticSystem",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_modified",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/modified"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/modified",
+      "alias": "dct_modified",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__foaf_homepage",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://xmlns.com/foaf/0.1/homepage"
+      ],
+      "slot_uri": "http://xmlns.com/foaf/0.1/homepage",
+      "alias": "foaf_homepage",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "FoafDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_rights",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/rights"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/rights",
+      "alias": "dct_rights",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DctRightsStatement",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_publisher",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/publisher"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/publisher",
+      "alias": "dct_publisher",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "FoafAgent",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_license",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/license"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/license",
+      "alias": "dct_license",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DctLicenseDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dcat_service",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#service"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#service",
+      "multivalued": true,
+      "alias": "dcat_service",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DcatDataService",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_spatial",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/spatial"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/spatial",
+      "multivalued": true,
+      "alias": "dct_spatial",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DctLocation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dcat_dataset",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#dataset"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#dataset",
+      "multivalued": true,
+      "alias": "dcat_dataset",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DcatDataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dcat_catalog",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#catalog"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#catalog",
+      "multivalued": true,
+      "alias": "dcat_catalog",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DcatCatalog",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_hasPart",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "multivalued": true,
+      "alias": "dct_hasPart",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DcatCatalog",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_isPart",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/isPart"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/isPart",
+      "alias": "dct_isPart",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DcatCatalog",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_temporal",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/temporal"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/temporal",
+      "multivalued": true,
+      "alias": "dct_temporal",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DctPeriodOfTime",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dcat_record",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#record"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#record",
+      "multivalued": true,
+      "alias": "dcat_record",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "DcatCatalogRecord",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalog__dct_creator",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/creator"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/creator",
+      "alias": "dct_creator",
+      "owner": "DcatCatalog",
+      "domain_of": [
+        "DcatCatalog"
+      ],
+      "range": "FoafAgent",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctLicenseDocument__dct_type",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/type"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/type",
+      "multivalued": true,
+      "alias": "dct_type",
+      "owner": "DctLicenseDocument",
+      "domain_of": [
+        "DctLicenseDocument"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dcat_endpointURL",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#endpointURL"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#endpointURL",
+      "multivalued": true,
+      "alias": "dcat_endpointURL",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "RdfsResource",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dcat_endpointDescription",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#endpointDescription"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#endpointDescription",
+      "multivalued": true,
+      "alias": "dcat_endpointDescription",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "RdfsResource",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dct_accessRights",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/accessRights"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/accessRights",
+      "alias": "dct_accessRights",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "DctRightsStatement",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#description"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
+      "multivalued": true,
+      "alias": "dct_description",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dct_format",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/format"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/format",
+      "multivalued": true,
+      "alias": "dct_format",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "DctMediaTypeOrExtent",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dcat_servesDataset",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#servesDataset"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#servesDataset",
+      "multivalued": true,
+      "alias": "dcat_servesDataset",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "DcatDataset",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDataService__dct_license",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/license"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/license",
+      "alias": "dct_license",
+      "owner": "DcatDataService",
+      "domain_of": [
+        "DcatDataService"
+      ],
+      "range": "DctLicenseDocument",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_modified",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/modified"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/modified",
+      "alias": "dct_modified",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "string",
+      "required": true,
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__adms_status",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/admsstatus"
+      ],
+      "slot_uri": "http://www.w3.org/ns/admsstatus",
+      "alias": "adms_status",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_conformsTo",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/conformsTo"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/conformsTo",
+      "multivalued": true,
+      "alias": "dct_conformsTo",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "DctStandard",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_issued",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/issued"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/issued",
+      "alias": "dct_issued",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#description"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
+      "multivalued": true,
+      "alias": "dct_description",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_language",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/language"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/language",
+      "multivalued": true,
+      "alias": "dct_language",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "DctLinguisticSystem",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__foaf_primaryTopic",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://xmlns.com/foaf/0.1/primaryTopic"
+      ],
+      "slot_uri": "http://xmlns.com/foaf/0.1/primaryTopic",
+      "alias": "foaf_primaryTopic",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "DcatResource",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatCatalogRecord__dct_source",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/source"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/source",
+      "alias": "dct_source",
+      "owner": "DcatCatalogRecord",
+      "domain_of": [
+        "DcatCatalogRecord"
+      ],
+      "range": "DcatCatalogRecord",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctLocation__dcat_bbox",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#bbox"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#bbox",
+      "alias": "dcat_bbox",
+      "owner": "DctLocation",
+      "domain_of": [
+        "DctLocation"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctLocation__dcat_centroid",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#centroid"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#centroid",
+      "alias": "dcat_centroid",
+      "owner": "DctLocation",
+      "domain_of": [
+        "DctLocation"
+      ],
+      "range": "RdfsLiteral",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctLocation__lcon_geometry",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/locngeometry"
+      ],
+      "slot_uri": "http://www.w3.org/ns/locngeometry",
+      "alias": "lcon_geometry",
+      "owner": "DctLocation",
+      "domain_of": [
+        "DctLocation"
+      ],
+      "range": "LconGeometry",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctPeriodOfTime__dcat_endDate",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#endDate"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#endDate",
+      "alias": "dcat_endDate",
+      "owner": "DctPeriodOfTime",
+      "domain_of": [
+        "DctPeriodOfTime"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctPeriodOfTime__dcat_startDate",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#startDate"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#startDate",
+      "alias": "dcat_startDate",
+      "owner": "DctPeriodOfTime",
+      "domain_of": [
+        "DctPeriodOfTime"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctPeriodOfTime__time_hasBeginning",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/2006/timehasBeginning"
+      ],
+      "slot_uri": "http://www.w3.org/2006/timehasBeginning",
+      "alias": "time_hasBeginning",
+      "owner": "DctPeriodOfTime",
+      "domain_of": [
+        "DctPeriodOfTime"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dctPeriodOfTime__time_hasEnd",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/2006/timehasEnd"
+      ],
+      "slot_uri": "http://www.w3.org/2006/timehasEnd",
+      "alias": "time_hasEnd",
+      "owner": "DctPeriodOfTime",
+      "domain_of": [
+        "DctPeriodOfTime"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "foafAgent__foaf_name",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://xmlns.com/foaf/0.1/name"
+      ],
+      "slot_uri": "http://xmlns.com/foaf/0.1/name",
+      "multivalued": true,
+      "alias": "foaf_name",
+      "owner": "FoafAgent",
+      "domain_of": [
+        "FoafAgent"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "foafAgent__dct_type",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/type"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/type",
+      "alias": "dct_type",
+      "owner": "FoafAgent",
+      "domain_of": [
+        "FoafAgent"
+      ],
+      "range": "SkosConcept",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "datasetinSeries__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#description"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
+      "multivalued": true,
+      "alias": "dct_description",
+      "owner": "DatasetinSeries",
+      "domain_of": [
+        "DatasetinSeries"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "datasetinSeries__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DatasetinSeries",
+      "domain_of": [
+        "DatasetinSeries"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "datasetinSeries__dct_accuralPeriodicity",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/accuralPeriodicity"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/accuralPeriodicity",
+      "multivalued": true,
+      "alias": "dct_accuralPeriodicity",
+      "owner": "DatasetinSeries",
+      "domain_of": [
+        "DatasetinSeries"
+      ],
+      "range": "DctFrequency",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "datasetinSeries__dcat_prev",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#prev"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#prev",
+      "multivalued": true,
+      "alias": "dcat_prev",
+      "owner": "DatasetinSeries",
+      "domain_of": [
+        "DatasetinSeries"
+      ],
+      "range": "DatasetinSeries",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "datasetinSeries__dcat_next",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#next"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#next",
+      "multivalued": true,
+      "alias": "dcat_next",
+      "owner": "DatasetinSeries",
+      "domain_of": [
+        "DatasetinSeries"
+      ],
+      "range": "DatasetinSeries",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "datasetinSeries__dcat_inSeries",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#inSeries"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#inSeries",
+      "multivalued": true,
+      "alias": "dcat_inSeries",
+      "owner": "DatasetinSeries",
+      "domain_of": [
+        "DatasetinSeries"
+      ],
+      "range": "DcatDatasetSeries",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_description",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#description"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#description",
+      "multivalued": true,
+      "alias": "dct_description",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_title",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "multivalued": true,
+      "alias": "dct_title",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "RdfsLiteral",
+      "required": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dcat_contactPoint",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#contactPoint"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#contactPoint",
+      "multivalued": true,
+      "alias": "dcat_contactPoint",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "VcardKind",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_accuralPeriodicity",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/accuralPeriodicity"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/accuralPeriodicity",
+      "alias": "dct_accuralPeriodicity",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "DctFrequency",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_issued",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/issued"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/issued",
+      "alias": "dct_issued",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_modified",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/modified"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/modified",
+      "alias": "dct_modified",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "string",
+      "any_of": [
+        {
+          "range": "XsdDate",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdDateTime",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYear",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "XsdGYearMonth",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_spatial",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/spatial"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/spatial",
+      "multivalued": true,
+      "alias": "dct_spatial",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "DctLocation",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_temporal",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/temporal"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/temporal",
+      "multivalued": true,
+      "alias": "dct_temporal",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "DctPeriodOfTime",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dct_publisher",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://purl.org/dc/terms/publisher"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/publisher",
+      "alias": "dct_publisher",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "FoafAgent",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dcat_seriesMember",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#seriesMember"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#seriesMember",
+      "multivalued": true,
+      "alias": "dcat_seriesMember",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "DatasetinSeries",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dcat_first",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#first"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#first",
+      "multivalued": true,
+      "alias": "dcat_first",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "DatasetinSeries",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "dcatDatasetSeries__dcat_last",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "http://www.w3.org/ns/dcat#last"
+      ],
+      "slot_uri": "http://www.w3.org/ns/dcat#last",
+      "multivalued": true,
+      "alias": "dcat_last",
+      "owner": "DcatDatasetSeries",
+      "domain_of": [
+        "DcatDatasetSeries"
+      ],
+      "range": "DatasetinSeries",
+      "inlined": true,
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/NamedThing",
-      "description": "A generic grouping for any identifiable entity",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
+      "name": "DcatDataset",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatDataset",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
       "mappings": [
-        "schema:Thing"
+        "dcat:Dataset"
       ],
       "slots": [
-        "id",
-        "name",
-        "description"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://schema.org/Thing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Catalog",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/Catalog",
-      "description": "Represents a catalog",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "catalog_primary_email",
-        "birth_date",
-        "age_in_years",
-        "vital_status"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/Catalog",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "CatalogCollection",
-      "definition_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/CatalogCollection",
-      "description": "A holder for catalog objects",
-      "from_schema": "https://w3id.org/HendrikBorgelt/DCATlinkML",
-      "slots": [
-        "catalogCollection__entries"
+        "dcatDataset__dct_description",
+        "dcatDataset__dct_title",
+        "dcatDataset__dct_contactPoint",
+        "dcatDataset__dct_keyword",
+        "dcatDataset__dct_theme",
+        "dcatDataset__adms_identifier",
+        "dcatDataset__adms_versionNotes",
+        "dcatDataset__dcat_landingPage",
+        "dcatDataset__dcat_qualifiedRelation",
+        "dcatDataset__dcat_spatialResolutionInMeters",
+        "dcatDataset__dcat_temporalResolution",
+        "dcatDataset__dcat_version",
+        "dcatDataset__dct_accessRights",
+        "dcatDataset__dct_accuralPeriodicity",
+        "dcatDataset__dct_conformsTo",
+        "dcatDataset__dct_identifier",
+        "dcatDataset__dct_isReferencedBy",
+        "dcatDataset__dct_issued",
+        "dcatDataset__dct_language",
+        "dcatDataset__dct_modified",
+        "dcatDataset__dct_provenance",
+        "dcatDataset__dct_relation",
+        "dcatDataset__dct_type",
+        "dcatDataset__foaf_page",
+        "dcatDataset__owl_versionInfo",
+        "dcatDataset__prov_qualifiedAttribution",
+        "dcatDataset__prov_wasGeneratedBy",
+        "dcatDataset__dcat_themeTaxonomy",
+        "dcatDataset__dct_spatial",
+        "dcatDataset__dct_temporal",
+        "dcatDataset__dct_publisher",
+        "dcatDataset__dcat_distribution",
+        "dcatDataset__dcat_hasVersion",
+        "dcatDataset__dcat_isVersionOf",
+        "dcatDataset__dct_source",
+        "dcatDataset__adms_sample"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "entries",
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
           "multivalued": true,
-          "range": "Catalog",
-          "inlined": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_contactPoint",
+          "slot_uri": "dct:contactPoint",
+          "multivalued": true,
+          "range": "VcardKind",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_keyword",
+          "slot_uri": "dct:keyword",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_theme",
+          "slot_uri": "dct:theme",
+          "multivalued": true,
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "adms_identifier",
+          "slot_uri": "adms:identifier",
+          "multivalued": true,
+          "range": "AdmsIdentifier",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "adms_versionNotes",
+          "slot_uri": "adms:versionNotes",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_landingPage",
+          "slot_uri": "dcat:landingPage",
+          "multivalued": true,
+          "range": "FoafDocument",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_qualifiedRelation",
+          "slot_uri": "dcat:qualifiedRelation",
+          "multivalued": true,
+          "range": "DcatRelationship",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_spatialResolutionInMeters",
+          "slot_uri": "dcat:spatialResolutionInMeters",
+          "multivalued": true,
+          "range": "XsdDecimal",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_temporalResolution",
+          "slot_uri": "dcat:temporalResolution",
+          "multivalued": true,
+          "range": "XsdDuration",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_version",
+          "slot_uri": "dcat:version",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_accessRights",
+          "slot_uri": "dct:accessRights",
+          "range": "DctFrequency",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_accuralPeriodicity",
+          "slot_uri": "dct:accuralPeriodicity",
+          "range": "DctFrequency",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_conformsTo",
+          "slot_uri": "dct:conformsTo",
+          "multivalued": true,
+          "range": "DctStandard",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_identifier",
+          "slot_uri": "dct:identifier",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_isReferencedBy",
+          "slot_uri": "dct:isReferencedBy",
+          "multivalued": true,
+          "range": "RdfsResource",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_issued",
+          "slot_uri": "dct:issued",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_language",
+          "slot_uri": "dct:language",
+          "multivalued": true,
+          "range": "DctLinguisticSystem",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_modified",
+          "slot_uri": "dct:modified",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_provenance",
+          "slot_uri": "dct:provenance",
+          "multivalued": true,
+          "range": "DctProvenanceStatement",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_relation",
+          "slot_uri": "dct:relation",
+          "multivalued": true,
+          "range": "RdfsResource",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_type",
+          "slot_uri": "dct:type",
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "foaf_page",
+          "slot_uri": "foaf:page",
+          "multivalued": true,
+          "range": "FoafDocument",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "owl_versionInfo",
+          "slot_uri": "owl:versionInfo",
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "prov_qualifiedAttribution",
+          "slot_uri": "prov:qualifiedAttribution",
+          "multivalued": true,
+          "range": "ProvAttribution",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "prov_wasGeneratedBy",
+          "slot_uri": "prov:wasGeneratedBy",
+          "multivalued": true,
+          "range": "ProvActivity",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_themeTaxonomy",
+          "slot_uri": "dcat:themeTaxonomy",
+          "multivalued": true,
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_spatial",
+          "slot_uri": "dct:spatial",
+          "multivalued": true,
+          "range": "DctLocation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_temporal",
+          "slot_uri": "dct:temporal",
+          "multivalued": true,
+          "range": "DctPeriodOfTime",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_publisher",
+          "slot_uri": "dct:publisher",
+          "range": "FoafAgent",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_distribution",
+          "slot_uri": "dcat:distribution",
+          "multivalued": true,
+          "range": "DcatDistribution",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_hasVersion",
+          "slot_uri": "dcat:hasVersion",
+          "multivalued": true,
+          "range": "DcatDataset",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_isVersionOf",
+          "slot_uri": "dcat:isVersionOf",
+          "multivalued": true,
+          "range": "DcatDataset",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_source",
+          "slot_uri": "dct:source",
+          "multivalued": true,
+          "range": "DcatDataset",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "adms_sample",
+          "slot_uri": "adms:sample",
+          "multivalued": true,
+          "range": "DcatDistribution",
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/HendrikBorgelt/DCATlinkML/CatalogCollection",
-      "tree_root": true,
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatDistribution",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatDistribution",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:Distribution"
+      ],
+      "slots": [
+        "dcatDistribution__dcat_accessURL",
+        "dcatDistribution__dcatap_availability",
+        "dcatDistribution__dct_description",
+        "dcatDistribution__dct_format",
+        "dcatDistribution__adms_status",
+        "dcatDistribution__dcat_byteSize",
+        "dcatDistribution__dcat_compressFormat",
+        "dcatDistribution__dcat_downloadURL",
+        "dcatDistribution__dcat_mediaType",
+        "dcatDistribution__dcat_packageFormat",
+        "dcatDistribution__dcat_spatialResolutionInMeters",
+        "dcatDistribution__dcat_temporalResolution",
+        "dcatDistribution__dct_conformsTo",
+        "dcatDistribution__dct_issued",
+        "dcatDistribution__dct_language",
+        "dcatDistribution__dct_modified",
+        "dcatDistribution__dct_rights",
+        "dcatDistribution__dct_title",
+        "dcatDistribution__foaf_page",
+        "dcatDistribution__odrl_hasPolicy",
+        "dcatDistribution__spdx_checksum",
+        "dcatDistribution__dct_license",
+        "dcatDistribution__dcat_accessesService"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dcat_accessURL",
+          "slot_uri": "dcat:accessURL",
+          "multivalued": true,
+          "range": "RdfsResource",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcatap_availability",
+          "slot_uri": "dcatap:availability",
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_format",
+          "slot_uri": "dct:format",
+          "range": "DctMediaTypeOrExtent",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "adms_status",
+          "slot_uri": "adms:status",
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_byteSize",
+          "slot_uri": "dcat:byteSize",
+          "range": "XsdNonNegativInteger",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_compressFormat",
+          "slot_uri": "dcat:compressFormat",
+          "range": "DctMediaType",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_downloadURL",
+          "slot_uri": "dcat:downloadURL",
+          "multivalued": true,
+          "range": "RdfsResource",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_mediaType",
+          "slot_uri": "dcat:compressFormat",
+          "range": "DctMediaType",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_packageFormat",
+          "slot_uri": "dcat:packageFormat",
+          "range": "DctMediaType",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_spatialResolutionInMeters",
+          "slot_uri": "dcat:spatialResolutionInMeters",
+          "multivalued": true,
+          "range": "XsdDecimal",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_temporalResolution",
+          "slot_uri": "dcat:temporalResolution",
+          "multivalued": true,
+          "range": "XsdDuration",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_conformsTo",
+          "slot_uri": "dct:conformsTo",
+          "multivalued": true,
+          "range": "DctStandard",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_issued",
+          "slot_uri": "dct:issued",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_language",
+          "slot_uri": "dct:language",
+          "multivalued": true,
+          "range": "DctLinguisticSystem",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_modified",
+          "slot_uri": "dct:modified",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_rights",
+          "slot_uri": "dct:rights",
+          "range": "DctRightsStatement",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "foaf_page",
+          "slot_uri": "foaf:page",
+          "multivalued": true,
+          "range": "FoafDocument",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "odrl_hasPolicy",
+          "slot_uri": "odrl:hasPolicy",
+          "range": "OdrlHasPolicy",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "spdx_checksum",
+          "slot_uri": "spdx:checksum",
+          "range": "SpdxChecksum",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_license",
+          "slot_uri": "dct:license",
+          "range": "DctLicenseDocument",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_accessesService",
+          "slot_uri": "dcat:accessesService",
+          "multivalued": true,
+          "range": "DcatDataService",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://www.w3.org/ns/dcat#Distribution",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatCatalog",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatCatalog",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:Catalog"
+      ],
+      "slots": [
+        "dcatCatalog__dct_description",
+        "dcatCatalog__dct_title",
+        "dcatCatalog__dcat_themeTaxonomy",
+        "dcatCatalog__dct_issued",
+        "dcatCatalog__dct_language",
+        "dcatCatalog__dct_modified",
+        "dcatCatalog__foaf_homepage",
+        "dcatCatalog__dct_rights",
+        "dcatCatalog__dct_publisher",
+        "dcatCatalog__dct_license",
+        "dcatCatalog__dcat_service",
+        "dcatCatalog__dct_spatial",
+        "dcatCatalog__dcat_dataset",
+        "dcatCatalog__dcat_catalog",
+        "dcatCatalog__dct_hasPart",
+        "dcatCatalog__dct_isPart",
+        "dcatCatalog__dct_temporal",
+        "dcatCatalog__dcat_record",
+        "dcatCatalog__dct_creator"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_themeTaxonomy",
+          "slot_uri": "dcat:themeTaxonomy",
+          "multivalued": true,
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_issued",
+          "slot_uri": "dct:issued",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_language",
+          "slot_uri": "dct:language",
+          "multivalued": true,
+          "range": "DctLinguisticSystem",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_modified",
+          "slot_uri": "dct:modified",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "foaf_homepage",
+          "slot_uri": "foaf:homepage",
+          "range": "FoafDocument",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_rights",
+          "slot_uri": "dct:rights",
+          "range": "DctRightsStatement",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_publisher",
+          "slot_uri": "dct:publisher",
+          "range": "FoafAgent",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_license",
+          "slot_uri": "dct:license",
+          "range": "DctLicenseDocument",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_service",
+          "slot_uri": "dcat:service",
+          "multivalued": true,
+          "range": "DcatDataService",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_spatial",
+          "slot_uri": "dct:spatial",
+          "multivalued": true,
+          "range": "DctLocation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_dataset",
+          "slot_uri": "dcat:dataset",
+          "multivalued": true,
+          "range": "DcatDataset",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_catalog",
+          "slot_uri": "dcat:catalog",
+          "multivalued": true,
+          "range": "DcatCatalog",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_hasPart",
+          "slot_uri": "dct:hasPart",
+          "multivalued": true,
+          "range": "DcatCatalog",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_isPart",
+          "slot_uri": "dct:isPart",
+          "range": "DcatCatalog",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_temporal",
+          "slot_uri": "dct:temporal",
+          "multivalued": true,
+          "range": "DctPeriodOfTime",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_record",
+          "slot_uri": "dcat:record",
+          "multivalued": true,
+          "range": "DcatCatalogRecord",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_creator",
+          "slot_uri": "dct:creator",
+          "range": "FoafAgent",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://www.w3.org/ns/dcat#Catalog",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctLicenseDocument",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctLicenseDocument",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:LicenseDocument"
+      ],
+      "slots": [
+        "dctLicenseDocument__dct_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dct_type",
+          "slot_uri": "dct:type",
+          "multivalued": true,
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://purl.org/dc/terms/LicenseDocument",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatDataService",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatDataService",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:DataService"
+      ],
+      "slots": [
+        "dcatDataService__dcat_endpointURL",
+        "dcatDataService__dct_title",
+        "dcatDataService__dcat_endpointDescription",
+        "dcatDataService__dct_accessRights",
+        "dcatDataService__dct_description",
+        "dcatDataService__dct_format",
+        "dcatDataService__dcat_servesDataset",
+        "dcatDataService__dct_license"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dcat_endpointURL",
+          "slot_uri": "dcat:endpointURL",
+          "multivalued": true,
+          "range": "RdfsResource",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_endpointDescription",
+          "slot_uri": "dcat:endpointDescription",
+          "multivalued": true,
+          "range": "RdfsResource",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_accessRights",
+          "slot_uri": "dct:accessRights",
+          "range": "DctRightsStatement",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_format",
+          "slot_uri": "dct:format",
+          "multivalued": true,
+          "range": "DctMediaTypeOrExtent",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_servesDataset",
+          "slot_uri": "dcat:servesDataset",
+          "multivalued": true,
+          "range": "DcatDataset",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_license",
+          "slot_uri": "dct:license",
+          "range": "DctLicenseDocument",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://www.w3.org/ns/dcat#DataService",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatCatalogRecord",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatCatalogRecord",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:CatalogRecord"
+      ],
+      "slots": [
+        "dcatCatalogRecord__dct_modified",
+        "dcatCatalogRecord__adms_status",
+        "dcatCatalogRecord__dct_conformsTo",
+        "dcatCatalogRecord__dct_issued",
+        "dcatCatalogRecord__dct_description",
+        "dcatCatalogRecord__dct_language",
+        "dcatCatalogRecord__dct_title",
+        "dcatCatalogRecord__foaf_primaryTopic",
+        "dcatCatalogRecord__dct_source"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dct_modified",
+          "slot_uri": "dct:modified",
+          "required": true,
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "adms_status",
+          "slot_uri": "adms:status",
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_conformsTo",
+          "slot_uri": "dct:conformsTo",
+          "multivalued": true,
+          "range": "DctStandard",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_issued",
+          "slot_uri": "dct:issued",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_language",
+          "slot_uri": "dct:language",
+          "multivalued": true,
+          "range": "DctLinguisticSystem",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "foaf_primaryTopic",
+          "slot_uri": "foaf:primaryTopic",
+          "range": "DcatResource",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_source",
+          "slot_uri": "dct:source",
+          "range": "DcatCatalogRecord",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctLocation",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctLocation",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:Location"
+      ],
+      "slots": [
+        "dctLocation__dcat_bbox",
+        "dctLocation__dcat_centroid",
+        "dctLocation__lcon_geometry"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dcat_bbox",
+          "slot_uri": "dcat:bbox",
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_centroid",
+          "slot_uri": "dcat:centroid",
+          "range": "RdfsLiteral",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "lcon_geometry",
+          "slot_uri": "lcon:geometry",
+          "range": "LconGeometry",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://purl.org/dc/terms/Location",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctPeriodOfTime",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctPeriodOfTime",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:PeriodOfTime"
+      ],
+      "slots": [
+        "dctPeriodOfTime__dcat_endDate",
+        "dctPeriodOfTime__dcat_startDate",
+        "dctPeriodOfTime__time_hasBeginning",
+        "dctPeriodOfTime__time_hasEnd"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dcat_endDate",
+          "slot_uri": "dcat:endDate",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_startDate",
+          "slot_uri": "dcat:startDate",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "time_hasBeginning",
+          "slot_uri": "time:hasBeginning",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "time_hasEnd",
+          "slot_uri": "time:hasEnd",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://purl.org/dc/terms/PeriodOfTime",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FoafAgent",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/FoafAgent",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "foaf:agent"
+      ],
+      "slots": [
+        "foafAgent__foaf_name",
+        "foafAgent__dct_type"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "foaf_name",
+          "slot_uri": "foaf:name",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_type",
+          "slot_uri": "dct:type",
+          "range": "SkosConcept",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://xmlns.com/foaf/0.1/agent",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DatasetinSeries",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DatasetinSeries",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcatap:DatasetinSeries"
+      ],
+      "slots": [
+        "datasetinSeries__dct_description",
+        "datasetinSeries__dct_title",
+        "datasetinSeries__dct_accuralPeriodicity",
+        "datasetinSeries__dcat_prev",
+        "datasetinSeries__dcat_next",
+        "datasetinSeries__dcat_inSeries"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_accuralPeriodicity",
+          "slot_uri": "dct:accuralPeriodicity",
+          "multivalued": true,
+          "range": "DctFrequency",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_prev",
+          "slot_uri": "dcat:prev",
+          "multivalued": true,
+          "range": "DatasetinSeries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_next",
+          "slot_uri": "dcat:next",
+          "multivalued": true,
+          "range": "DatasetinSeries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_inSeries",
+          "slot_uri": "dcat:inSeries",
+          "multivalued": true,
+          "range": "DcatDatasetSeries",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://data.europa.eu/r5r/DatasetinSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatDatasetSeries",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatDatasetSeries",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:DatasetSeries"
+      ],
+      "slots": [
+        "dcatDatasetSeries__dct_description",
+        "dcatDatasetSeries__dct_title",
+        "dcatDatasetSeries__dcat_contactPoint",
+        "dcatDatasetSeries__dct_accuralPeriodicity",
+        "dcatDatasetSeries__dct_issued",
+        "dcatDatasetSeries__dct_modified",
+        "dcatDatasetSeries__dct_spatial",
+        "dcatDatasetSeries__dct_temporal",
+        "dcatDatasetSeries__dct_publisher",
+        "dcatDatasetSeries__dcat_seriesMember",
+        "dcatDatasetSeries__dcat_first",
+        "dcatDatasetSeries__dcat_last"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "dct_description",
+          "slot_uri": "dcat:description",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_title",
+          "slot_uri": "dct:title",
+          "multivalued": true,
+          "range": "RdfsLiteral",
+          "required": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_contactPoint",
+          "slot_uri": "dcat:contactPoint",
+          "multivalued": true,
+          "range": "VcardKind",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_accuralPeriodicity",
+          "slot_uri": "dct:accuralPeriodicity",
+          "range": "DctFrequency",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_issued",
+          "slot_uri": "dct:issued",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_modified",
+          "slot_uri": "dct:modified",
+          "any_of": [
+            {
+              "range": "XsdDate",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdDateTime",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYear",
+              "@type": "AnonymousSlotExpression"
+            },
+            {
+              "range": "XsdGYearMonth",
+              "@type": "AnonymousSlotExpression"
+            }
+          ],
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_spatial",
+          "slot_uri": "dct:spatial",
+          "multivalued": true,
+          "range": "DctLocation",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_temporal",
+          "slot_uri": "dct:temporal",
+          "multivalued": true,
+          "range": "DctPeriodOfTime",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dct_publisher",
+          "slot_uri": "dct:publisher",
+          "range": "FoafAgent",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_seriesMember",
+          "slot_uri": "dcat:seriesMember",
+          "multivalued": true,
+          "range": "DatasetinSeries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_first",
+          "slot_uri": "dcat:first",
+          "multivalued": true,
+          "range": "DatasetinSeries",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "dcat_last",
+          "slot_uri": "dcat:last",
+          "multivalued": true,
+          "range": "DatasetinSeries",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://www.w3.org/ns/dcat#DatasetSeries",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatResource",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatResource",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:Resource"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Resource",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RdfsLiteral",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/RdfsLiteral",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "rdfs:Literal"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "VcardKind",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/VcardKind",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "vcard:Kind"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2006/vcard/nsKind",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SkosConcept",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/SkosConcept",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "skos:Concept"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2004/02/skos/core#Concept",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AdmsIdentifier",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/AdmsIdentifier",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "adms:identifier"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/admsidentifier",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "FoafDocument",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/FoafDocument",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "foaf:Document"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://xmlns.com/foaf/0.1/Document",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DcatRelationship",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DcatRelationship",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dcat:Relationship"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Relationship",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdDecimal",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdDecimal",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:decimal"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdDuration",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdDuration",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:duration"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#duration",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctFrequency",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctFrequency",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:Frequency"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/Frequency",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctStandard",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctStandard",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:Standard"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/Standard",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RdfsResource",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/RdfsResource",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "rdfs:Resource"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctLinguisticSystem",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctLinguisticSystem",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:LinguisticSystem"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/LinguisticSystem",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctProvenanceStatement",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctProvenanceStatement",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:ProvenanceStatement"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/ProvenanceStatement",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProvAttribution",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/ProvAttribution",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "prov:Attribution"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/provAttribution",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ProvActivity",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/ProvActivity",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "prov:Activity"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/provActivity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctMediaTypeOrExtent",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctMediaTypeOrExtent",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:MediaTypeOrExtent"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/MediaTypeOrExtent",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdNonNegativInteger",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdNonNegativInteger",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:nonNegativeInteger"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctMediaType",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctMediaType",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:MediaType"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/MediaType",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DctRightsStatement",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/DctRightsStatement",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "dct:RightsStatement"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/RightsStatement",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OdrlHasPolicy",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/OdrlHasPolicy",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "odrl:hasPolicy"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/odrl/2/hasPolicy",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SpdxChecksum",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/SpdxChecksum",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "spdx:Checksum"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://spdx.org/rdf/termsChecksum",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "LconGeometry",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/LconGeometry",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "lcon:Geometry"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/locnGeometry",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdDate",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdDate",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:date"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#date",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdDateTime",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdDateTime",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:dateTime"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdGYear",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdGYear",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:gYear"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#gYear",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "XsdGYearMonth",
+      "definition_uri": "https://ndfi4cat.de/linkml/tests/DCATap/XsdGYearMonth",
+      "from_schema": "https://ndfi4cat.de/linkml/tests/DCATap",
+      "mappings": [
+        "xsd:gYearMonth"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2001/XMLSchema#gYearMonth",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcatlinkml.yaml",
-  "source_file_date": "2024-05-02T13:12:09",
-  "source_file_size": 2163,
-  "generation_date": "2024-05-02T13:12:50",
+  "source_file_date": "2024-05-02T13:21:06",
+  "source_file_size": 28139,
+  "generation_date": "2024-05-02T13:34:37",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcatlinkml.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     {
-      "@base": "https://w3id.org/HendrikBorgelt/DCATlinkML/"
+      "@base": "https://ndfi4cat.de/linkml/tests/DCATap/"
     }
   ]
 }

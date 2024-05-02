@@ -1,11 +1,139 @@
 {
-   "PATO": "http://purl.obolibrary.org/obo/PATO_",
-   "biolink": "https://w3id.org/biolink/",
-   "dcatlinkml": "https://w3id.org/HendrikBorgelt/DCATlinkML/",
-   "example": "https://example.org/",
+   "DCATap_LinkML_Template_from_NFDI4Cat": "https://ndfi4cat.de/linkml/tests/DCATap",
+   "adms": "http://www.w3.org/ns/adms",
+   "cc": "http://creativecommons.org/ns",
+   "dc": "http://purl.org/dc/elements/1.1/",
+   "dcat": "http://www.w3.org/ns/dcat#",
+   "dcatap": "http://data.europa.eu/r5r/",
+   "dct": "http://purl.org/dc/terms/",
+   "foaf": "http://xmlns.com/foaf/0.1/",
+   "lcon": "http://www.w3.org/ns/locn",
    "linkml": "https://w3id.org/linkml/",
+   "odrl": "http://www.w3.org/ns/odrl/2/",
+   "org": "http://www.w3.org/ns/org",
+   "owl": "http://www.w3.org/2002/07/owl",
+   "prov": "http://www.w3.org/ns/prov",
+   "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns",
+   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
    "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
+   "sh": "http://www.w3.org/ns/shacl",
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "spdx": "http://spdx.org/rdf/terms",
+   "time": "http://www.w3.org/2006/time",
+   "vcard": "http://www.w3.org/2006/vcard/ns",
+   "xsd": "http://www.w3.org/2001/XMLSchema#",
+   "AdmsIdentifier": {
+      "@id": "adms:identifier"
+   },
+   "DatasetinSeries": {
+      "@id": "dcatap:DatasetinSeries"
+   },
+   "DcatCatalog": {
+      "@id": "dcat:Catalog"
+   },
+   "DcatCatalogRecord": {
+      "@id": "dcat:CatalogRecord"
+   },
+   "DcatDataService": {
+      "@id": "dcat:DataService"
+   },
+   "DcatDataset": {
+      "@id": "dcat:Dataset"
+   },
+   "DcatDatasetSeries": {
+      "@id": "dcat:DatasetSeries"
+   },
+   "DcatDistribution": {
+      "@id": "dcat:Distribution"
+   },
+   "DcatRelationship": {
+      "@id": "dcat:Relationship"
+   },
+   "DcatResource": {
+      "@id": "dcat:Resource"
+   },
+   "DctFrequency": {
+      "@id": "dct:Frequency"
+   },
+   "DctLicenseDocument": {
+      "@id": "dct:LicenseDocument"
+   },
+   "DctLinguisticSystem": {
+      "@id": "dct:LinguisticSystem"
+   },
+   "DctLocation": {
+      "@id": "dct:Location"
+   },
+   "DctMediaType": {
+      "@id": "dct:MediaType"
+   },
+   "DctMediaTypeOrExtent": {
+      "@id": "dct:MediaTypeOrExtent"
+   },
+   "DctPeriodOfTime": {
+      "@id": "dct:PeriodOfTime"
+   },
+   "DctProvenanceStatement": {
+      "@id": "dct:ProvenanceStatement"
+   },
+   "DctRightsStatement": {
+      "@id": "dct:RightsStatement"
+   },
+   "DctStandard": {
+      "@id": "dct:Standard"
+   },
+   "FoafAgent": {
+      "@id": "foaf:agent"
+   },
+   "FoafDocument": {
+      "@id": "foaf:Document"
+   },
+   "LconGeometry": {
+      "@id": "lcon:Geometry"
+   },
+   "OdrlHasPolicy": {
+      "@id": "odrl:hasPolicy"
+   },
+   "ProvActivity": {
+      "@id": "prov:Activity"
+   },
+   "ProvAttribution": {
+      "@id": "prov:Attribution"
+   },
+   "RdfsLiteral": {
+      "@id": "rdfs:Literal"
+   },
+   "RdfsResource": {
+      "@id": "rdfs:Resource"
+   },
+   "SkosConcept": {
+      "@id": "skos:Concept"
+   },
+   "SpdxChecksum": {
+      "@id": "spdx:Checksum"
+   },
+   "VcardKind": {
+      "@id": "vcard:Kind"
+   },
+   "XsdDate": {
+      "@id": "xsd:date"
+   },
+   "XsdDateTime": {
+      "@id": "xsd:dateTime"
+   },
+   "XsdDecimal": {
+      "@id": "xsd:decimal"
+   },
+   "XsdDuration": {
+      "@id": "xsd:duration"
+   },
+   "XsdGYear": {
+      "@id": "xsd:gYear"
+   },
+   "XsdGYearMonth": {
+      "@id": "xsd:gYearMonth"
+   },
+   "XsdNonNegativInteger": {
+      "@id": "xsd:nonNegativeInteger"
    }
 }

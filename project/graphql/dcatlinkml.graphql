@@ -1,23 +1,275 @@
-type Catalog
+type AdmsIdentifier
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
   }
 
-type CatalogCollection
+type DatasetinSeries
   {
-    entries: [Catalog]
+    dctDescription: [RdfsLiteral]!
+    dctTitle: [RdfsLiteral]!
+    dctAccuralPeriodicity: [DctFrequency]
+    dcatPrev: [DatasetinSeries]
+    dcatNext: [DatasetinSeries]
+    dcatInSeries: [DcatDatasetSeries]
   }
 
-type NamedThing
+type DcatCatalog
   {
-    id: Uriorcurie!
-    name: String
-    description: String
+    dctDescription: [RdfsLiteral]!
+    dctTitle: [RdfsLiteral]!
+    dcatThemeTaxonomy: [SkosConcept]
+    dctIssued: String
+    dctLanguage: [DctLinguisticSystem]
+    dctModified: String
+    foafHomepage: FoafDocument
+    dctRights: DctRightsStatement
+    dctPublisher: FoafAgent!
+    dctLicense: DctLicenseDocument
+    dcatService: [DcatDataService]
+    dctSpatial: [DctLocation]
+    dcatDataset: [DcatDataset]
+    dcatCatalog: [DcatCatalog]
+    dctHasPart: [DcatCatalog]
+    dctIsPart: DcatCatalog
+    dctTemporal: [DctPeriodOfTime]
+    dcatRecord: [DcatCatalogRecord]
+    dctCreator: FoafAgent
+  }
+
+type DcatCatalogRecord
+  {
+    dctModified: String!
+    admsStatus: SkosConcept
+    dctConformsTo: [DctStandard]
+    dctIssued: String
+    dctDescription: [RdfsLiteral]
+    dctLanguage: [DctLinguisticSystem]
+    dctTitle: [RdfsLiteral]
+    foafPrimaryTopic: DcatResource!
+    dctSource: DcatCatalogRecord
+  }
+
+type DcatDataService
+  {
+    dcatEndpointURL: [RdfsResource]!
+    dctTitle: [RdfsLiteral]!
+    dcatEndpointDescription: [RdfsResource]
+    dctAccessRights: DctRightsStatement
+    dctDescription: [RdfsLiteral]
+    dctFormat: [DctMediaTypeOrExtent]
+    dcatServesDataset: [DcatDataset]
+    dctLicense: DctLicenseDocument
+  }
+
+type DcatDataset
+  {
+    dctDescription: [RdfsLiteral]!
+    dctTitle: [RdfsLiteral]!
+    dctContactPoint: [VcardKind]
+    dctKeyword: [RdfsLiteral]
+    dctTheme: [SkosConcept]
+    admsIdentifier: [AdmsIdentifier]
+    admsVersionNotes: [RdfsLiteral]
+    dcatLandingPage: [FoafDocument]
+    dcatQualifiedRelation: [DcatRelationship]
+    dcatSpatialResolutionInMeters: [XsdDecimal]
+    dcatTemporalResolution: [XsdDuration]
+    dcatVersion: [RdfsLiteral]
+    dctAccessRights: DctFrequency
+    dctAccuralPeriodicity: DctFrequency
+    dctConformsTo: [DctStandard]
+    dctIdentifier: [RdfsLiteral]
+    dctIsReferencedBy: [RdfsResource]
+    dctIssued: String
+    dctLanguage: [DctLinguisticSystem]
+    dctModified: String
+    dctProvenance: [DctProvenanceStatement]
+    dctRelation: [RdfsResource]
+    dctType: SkosConcept
+    foafPage: [FoafDocument]
+    owlVersionInfo: RdfsLiteral
+    provQualifiedAttribution: [ProvAttribution]
+    provWasGeneratedBy: [ProvActivity]
+    dcatThemeTaxonomy: [SkosConcept]
+    dctSpatial: [DctLocation]
+    dctTemporal: [DctPeriodOfTime]
+    dctPublisher: FoafAgent
+    dcatDistribution: [DcatDistribution]
+    dcatHasVersion: [DcatDataset]
+    dcatIsVersionOf: [DcatDataset]
+    dctSource: [DcatDataset]
+    admsSample: [DcatDistribution]
+  }
+
+type DcatDatasetSeries
+  {
+    dctDescription: [RdfsLiteral]!
+    dctTitle: [RdfsLiteral]!
+    dcatContactPoint: [VcardKind]
+    dctAccuralPeriodicity: DctFrequency
+    dctIssued: String
+    dctModified: String
+    dctSpatial: [DctLocation]
+    dctTemporal: [DctPeriodOfTime]
+    dctPublisher: FoafAgent
+    dcatSeriesMember: [DatasetinSeries]
+    dcatFirst: [DatasetinSeries]
+    dcatLast: [DatasetinSeries]
+  }
+
+type DcatDistribution
+  {
+    dcatAccessURL: [RdfsResource]!
+    dcatapAvailability: SkosConcept
+    dctDescription: [RdfsLiteral]
+    dctFormat: DctMediaTypeOrExtent
+    admsStatus: SkosConcept
+    dcatByteSize: XsdNonNegativInteger
+    dcatCompressFormat: DctMediaType
+    dcatDownloadURL: [RdfsResource]
+    dcatMediaType: DctMediaType
+    dcatPackageFormat: DctMediaType
+    dcatSpatialResolutionInMeters: [XsdDecimal]
+    dcatTemporalResolution: [XsdDuration]
+    dctConformsTo: [DctStandard]
+    dctIssued: String
+    dctLanguage: [DctLinguisticSystem]
+    dctModified: String
+    dctRights: DctRightsStatement
+    dctTitle: [RdfsLiteral]
+    foafPage: [FoafDocument]
+    odrlHasPolicy: OdrlHasPolicy
+    spdxChecksum: SpdxChecksum
+    dctLicense: DctLicenseDocument
+    dcatAccessesService: [DcatDataService]
+  }
+
+type DcatRelationship
+  {
+  }
+
+type DcatResource
+  {
+  }
+
+type DctFrequency
+  {
+  }
+
+type DctLicenseDocument
+  {
+    dctType: [SkosConcept]
+  }
+
+type DctLinguisticSystem
+  {
+  }
+
+type DctLocation
+  {
+    dcatBbox: RdfsLiteral
+    dcatCentroid: RdfsLiteral
+    lconGeometry: LconGeometry
+  }
+
+type DctMediaType
+  {
+  }
+
+type DctMediaTypeOrExtent
+  {
+  }
+
+type DctPeriodOfTime
+  {
+    dcatEndDate: String
+    dcatStartDate: String
+    timeHasBeginning: String
+    timeHasEnd: String
+  }
+
+type DctProvenanceStatement
+  {
+  }
+
+type DctRightsStatement
+  {
+  }
+
+type DctStandard
+  {
+  }
+
+type FoafAgent
+  {
+    foafName: [RdfsLiteral]!
+    dctType: SkosConcept
+  }
+
+type FoafDocument
+  {
+  }
+
+type LconGeometry
+  {
+  }
+
+type OdrlHasPolicy
+  {
+  }
+
+type ProvActivity
+  {
+  }
+
+type ProvAttribution
+  {
+  }
+
+type RdfsLiteral
+  {
+  }
+
+type RdfsResource
+  {
+  }
+
+type SkosConcept
+  {
+  }
+
+type SpdxChecksum
+  {
+  }
+
+type VcardKind
+  {
+  }
+
+type XsdDate
+  {
+  }
+
+type XsdDateTime
+  {
+  }
+
+type XsdDecimal
+  {
+  }
+
+type XsdDuration
+  {
+  }
+
+type XsdGYear
+  {
+  }
+
+type XsdGYearMonth
+  {
+  }
+
+type XsdNonNegativInteger
+  {
   }
 

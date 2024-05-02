@@ -1,8 +1,14 @@
-BASE <https://w3id.org/HendrikBorgelt/DCATlinkML/>
+BASE <https://ndfi4cat.de/linkml/tests/DCATap/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
 
 
 linkml:String xsd:string
@@ -43,33 +49,354 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<Catalog> CLOSED {
-    (  $<Catalog_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/HendrikBorgelt/DCATlinkML/PersonStatus#UNKNOWN> ] ?
+<AdmsIdentifier> CLOSED {
+    (  $<AdmsIdentifier_tes> rdf:type . * ;
+       rdf:type [ <http://www.w3.org/ns/admsidentifier> ] ?
+    )
+}
+
+<DatasetinSeries> CLOSED {
+    (  $<DatasetinSeries_tes> (  dcat:description @<RdfsLiteral> + ;
+          dct:title @<RdfsLiteral> + ;
+          dct:accuralPeriodicity @<DctFrequency> * ;
+          dcat:prev @<DatasetinSeries> * ;
+          dcat:next @<DatasetinSeries> * ;
+          dcat:inSeries @<DcatDatasetSeries> *
        ) ;
-       rdf:type [ <Catalog> ]
+       rdf:type [ dcatap:DatasetinSeries ] ?
     )
 }
 
-<CatalogCollection> CLOSED {
-    (  $<CatalogCollection_tes> <entries> @<Catalog> * ;
-       rdf:type [ <CatalogCollection> ] ?
+<DcatCatalog> CLOSED {
+    (  $<DcatCatalog_tes> (  dcat:description @<RdfsLiteral> + ;
+          dct:title @<RdfsLiteral> + ;
+          dcat:themeTaxonomy @<SkosConcept> * ;
+          dct:issued @linkml:String ? ;
+          dct:language @<DctLinguisticSystem> * ;
+          dct:modified @linkml:String ? ;
+          foaf:homepage @<FoafDocument> ? ;
+          dct:rights @<DctRightsStatement> ? ;
+          dct:publisher @<FoafAgent> ;
+          dct:license @<DctLicenseDocument> ? ;
+          dcat:service @<DcatDataService> * ;
+          dct:spatial @<DctLocation> * ;
+          dcat:dataset @<DcatDataset> * ;
+          dcat:catalog @<DcatCatalog> * ;
+          dct:hasPart @<DcatCatalog> * ;
+          dct:isPart @<DcatCatalog> ? ;
+          dct:temporal @<DctPeriodOfTime> * ;
+          dcat:record @<DcatCatalogRecord> * ;
+          dct:creator @<FoafAgent> ?
+       ) ;
+       rdf:type [ dcat:Catalog ] ?
     )
 }
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
-       )
-    } OR @<Catalog>
-)
+<DcatCatalogRecord> CLOSED {
+    (  $<DcatCatalogRecord_tes> (  dct:modified @linkml:String ;
+          <http://www.w3.org/ns/admsstatus> @<SkosConcept> ? ;
+          dct:conformsTo @<DctStandard> * ;
+          dct:issued @linkml:String ? ;
+          dcat:description @<RdfsLiteral> * ;
+          dct:language @<DctLinguisticSystem> * ;
+          dct:title @<RdfsLiteral> * ;
+          foaf:primaryTopic @<DcatResource> ;
+          dct:source @<DcatCatalogRecord> ?
+       ) ;
+       rdf:type [ dcat:CatalogRecord ] ?
+    )
+}
+
+<DcatDataService> CLOSED {
+    (  $<DcatDataService_tes> (  dcat:endpointURL @<RdfsResource> + ;
+          dct:title @<RdfsLiteral> + ;
+          dcat:endpointDescription @<RdfsResource> * ;
+          dct:accessRights @<DctRightsStatement> ? ;
+          dcat:description @<RdfsLiteral> * ;
+          dct:format @<DctMediaTypeOrExtent> * ;
+          dcat:servesDataset @<DcatDataset> * ;
+          dct:license @<DctLicenseDocument> ?
+       ) ;
+       rdf:type [ dcat:DataService ] ?
+    )
+}
+
+<DcatDataset> CLOSED {
+    (  $<DcatDataset_tes> (  dcat:description @<RdfsLiteral> + ;
+          dct:title @<RdfsLiteral> + ;
+          dct:contactPoint @<VcardKind> * ;
+          dct:keyword @<RdfsLiteral> * ;
+          dct:theme @<SkosConcept> * ;
+          <http://www.w3.org/ns/admsidentifier> @<AdmsIdentifier> * ;
+          <http://www.w3.org/ns/admsversionNotes> @<RdfsLiteral> * ;
+          dcat:landingPage @<FoafDocument> * ;
+          dcat:qualifiedRelation @<DcatRelationship> * ;
+          dcat:spatialResolutionInMeters @<XsdDecimal> * ;
+          dcat:temporalResolution @<XsdDuration> * ;
+          dcat:version @<RdfsLiteral> * ;
+          dct:accessRights @<DctFrequency> ? ;
+          dct:accuralPeriodicity @<DctFrequency> ? ;
+          dct:conformsTo @<DctStandard> * ;
+          dct:identifier @<RdfsLiteral> * ;
+          dct:isReferencedBy @<RdfsResource> * ;
+          dct:issued @linkml:String ? ;
+          dct:language @<DctLinguisticSystem> * ;
+          dct:modified @linkml:String ? ;
+          dct:provenance @<DctProvenanceStatement> * ;
+          dct:relation @<RdfsResource> * ;
+          dct:type @<SkosConcept> ? ;
+          foaf:page @<FoafDocument> * ;
+          <http://www.w3.org/2002/07/owlversionInfo> @<RdfsLiteral> ? ;
+          <http://www.w3.org/ns/provqualifiedAttribution> @<ProvAttribution> * ;
+          <http://www.w3.org/ns/provwasGeneratedBy> @<ProvActivity> * ;
+          dcat:themeTaxonomy @<SkosConcept> * ;
+          dct:spatial @<DctLocation> * ;
+          dct:temporal @<DctPeriodOfTime> * ;
+          dct:publisher @<FoafAgent> ? ;
+          dcat:distribution @<DcatDistribution> * ;
+          dcat:hasVersion @<DcatDataset> * ;
+          dcat:isVersionOf @<DcatDataset> * ;
+          dct:source @<DcatDataset> * ;
+          <http://www.w3.org/ns/admssample> @<DcatDistribution> *
+       ) ;
+       rdf:type [ dcat:Dataset ] ?
+    )
+}
+
+<DcatDatasetSeries> CLOSED {
+    (  $<DcatDatasetSeries_tes> (  dcat:description @<RdfsLiteral> + ;
+          dct:title @<RdfsLiteral> + ;
+          dcat:contactPoint @<VcardKind> * ;
+          dct:accuralPeriodicity @<DctFrequency> ? ;
+          dct:issued @linkml:String ? ;
+          dct:modified @linkml:String ? ;
+          dct:spatial @<DctLocation> * ;
+          dct:temporal @<DctPeriodOfTime> * ;
+          dct:publisher @<FoafAgent> ? ;
+          dcat:seriesMember @<DatasetinSeries> * ;
+          dcat:first @<DatasetinSeries> * ;
+          dcat:last @<DatasetinSeries> *
+       ) ;
+       rdf:type [ dcat:DatasetSeries ] ?
+    )
+}
+
+<DcatDistribution> CLOSED {
+    (  $<DcatDistribution_tes> (  dcat:accessURL @<RdfsResource> + ;
+          dcatap:availability @<SkosConcept> ? ;
+          dcat:description @<RdfsLiteral> * ;
+          dct:format @<DctMediaTypeOrExtent> ? ;
+          <http://www.w3.org/ns/admsstatus> @<SkosConcept> ? ;
+          dcat:byteSize @<XsdNonNegativInteger> ? ;
+          dcat:compressFormat @<DctMediaType> ? ;
+          dcat:downloadURL @<RdfsResource> * ;
+          dcat:compressFormat @<DctMediaType> ? ;
+          dcat:packageFormat @<DctMediaType> ? ;
+          dcat:spatialResolutionInMeters @<XsdDecimal> * ;
+          dcat:temporalResolution @<XsdDuration> * ;
+          dct:conformsTo @<DctStandard> * ;
+          dct:issued @linkml:String ? ;
+          dct:language @<DctLinguisticSystem> * ;
+          dct:modified @linkml:String ? ;
+          dct:rights @<DctRightsStatement> ? ;
+          dct:title @<RdfsLiteral> * ;
+          foaf:page @<FoafDocument> * ;
+          odrl:hasPolicy @<OdrlHasPolicy> ? ;
+          <http://spdx.org/rdf/termschecksum> @<SpdxChecksum> ? ;
+          dct:license @<DctLicenseDocument> ? ;
+          dcat:accessesService @<DcatDataService> *
+       ) ;
+       rdf:type [ dcat:Distribution ] ?
+    )
+}
+
+<DcatRelationship> CLOSED {
+    (  $<DcatRelationship_tes> rdf:type . * ;
+       rdf:type [ dcat:Relationship ] ?
+    )
+}
+
+<DcatResource> CLOSED {
+    (  $<DcatResource_tes> rdf:type . * ;
+       rdf:type [ dcat:Resource ] ?
+    )
+}
+
+<DctFrequency> CLOSED {
+    (  $<DctFrequency_tes> rdf:type . * ;
+       rdf:type [ dct:Frequency ] ?
+    )
+}
+
+<DctLicenseDocument> CLOSED {
+    (  $<DctLicenseDocument_tes> dct:type @<SkosConcept> * ;
+       rdf:type [ dct:LicenseDocument ] ?
+    )
+}
+
+<DctLinguisticSystem> CLOSED {
+    (  $<DctLinguisticSystem_tes> rdf:type . * ;
+       rdf:type [ dct:LinguisticSystem ] ?
+    )
+}
+
+<DctLocation> CLOSED {
+    (  $<DctLocation_tes> (  dcat:bbox @<RdfsLiteral> ? ;
+          dcat:centroid @<RdfsLiteral> ? ;
+          <http://www.w3.org/ns/locngeometry> @<LconGeometry> ?
+       ) ;
+       rdf:type [ dct:Location ] ?
+    )
+}
+
+<DctMediaType> CLOSED {
+    (  $<DctMediaType_tes> rdf:type . * ;
+       rdf:type [ dct:MediaType ] ?
+    )
+}
+
+<DctMediaTypeOrExtent> CLOSED {
+    (  $<DctMediaTypeOrExtent_tes> rdf:type . * ;
+       rdf:type [ dct:MediaTypeOrExtent ] ?
+    )
+}
+
+<DctPeriodOfTime> CLOSED {
+    (  $<DctPeriodOfTime_tes> (  dcat:endDate @linkml:String ? ;
+          dcat:startDate @linkml:String ? ;
+          <http://www.w3.org/2006/timehasBeginning> @linkml:String ? ;
+          <http://www.w3.org/2006/timehasEnd> @linkml:String ?
+       ) ;
+       rdf:type [ dct:PeriodOfTime ] ?
+    )
+}
+
+<DctProvenanceStatement> CLOSED {
+    (  $<DctProvenanceStatement_tes> rdf:type . * ;
+       rdf:type [ dct:ProvenanceStatement ] ?
+    )
+}
+
+<DctRightsStatement> CLOSED {
+    (  $<DctRightsStatement_tes> rdf:type . * ;
+       rdf:type [ dct:RightsStatement ] ?
+    )
+}
+
+<DctStandard> CLOSED {
+    (  $<DctStandard_tes> rdf:type . * ;
+       rdf:type [ dct:Standard ] ?
+    )
+}
+
+<FoafAgent> CLOSED {
+    (  $<FoafAgent_tes> (  foaf:name @<RdfsLiteral> + ;
+          dct:type @<SkosConcept> ?
+       ) ;
+       rdf:type [ foaf:agent ] ?
+    )
+}
+
+<FoafDocument> CLOSED {
+    (  $<FoafDocument_tes> rdf:type . * ;
+       rdf:type [ foaf:Document ] ?
+    )
+}
+
+<LconGeometry> CLOSED {
+    (  $<LconGeometry_tes> rdf:type . * ;
+       rdf:type [ <http://www.w3.org/ns/locnGeometry> ] ?
+    )
+}
+
+<OdrlHasPolicy> CLOSED {
+    (  $<OdrlHasPolicy_tes> rdf:type . * ;
+       rdf:type [ odrl:hasPolicy ] ?
+    )
+}
+
+<ProvActivity> CLOSED {
+    (  $<ProvActivity_tes> rdf:type . * ;
+       rdf:type [ <http://www.w3.org/ns/provActivity> ] ?
+    )
+}
+
+<ProvAttribution> CLOSED {
+    (  $<ProvAttribution_tes> rdf:type . * ;
+       rdf:type [ <http://www.w3.org/ns/provAttribution> ] ?
+    )
+}
+
+<RdfsLiteral> CLOSED {
+    (  $<RdfsLiteral_tes> rdf:type . * ;
+       rdf:type [ rdfs:Literal ] ?
+    )
+}
+
+<RdfsResource> CLOSED {
+    (  $<RdfsResource_tes> rdf:type . * ;
+       rdf:type [ rdfs:Resource ] ?
+    )
+}
+
+<SkosConcept> CLOSED {
+    (  $<SkosConcept_tes> rdf:type . * ;
+       rdf:type [ skos:Concept ] ?
+    )
+}
+
+<SpdxChecksum> CLOSED {
+    (  $<SpdxChecksum_tes> rdf:type . * ;
+       rdf:type [ <http://spdx.org/rdf/termsChecksum> ] ?
+    )
+}
+
+<VcardKind> CLOSED {
+    (  $<VcardKind_tes> rdf:type . * ;
+       rdf:type [ <http://www.w3.org/2006/vcard/nsKind> ] ?
+    )
+}
+
+<XsdDate> CLOSED {
+    (  $<XsdDate_tes> rdf:type . * ;
+       rdf:type [ xsd:date ] ?
+    )
+}
+
+<XsdDateTime> CLOSED {
+    (  $<XsdDateTime_tes> rdf:type . * ;
+       rdf:type [ xsd:dateTime ] ?
+    )
+}
+
+<XsdDecimal> CLOSED {
+    (  $<XsdDecimal_tes> rdf:type . * ;
+       rdf:type [ xsd:decimal ] ?
+    )
+}
+
+<XsdDuration> CLOSED {
+    (  $<XsdDuration_tes> rdf:type . * ;
+       rdf:type [ xsd:duration ] ?
+    )
+}
+
+<XsdGYear> CLOSED {
+    (  $<XsdGYear_tes> rdf:type . * ;
+       rdf:type [ xsd:gYear ] ?
+    )
+}
+
+<XsdGYearMonth> CLOSED {
+    (  $<XsdGYearMonth_tes> rdf:type . * ;
+       rdf:type [ xsd:gYearMonth ] ?
+    )
+}
+
+<XsdNonNegativInteger> CLOSED {
+    (  $<XsdNonNegativInteger_tes> rdf:type . * ;
+       rdf:type [ xsd:nonNegativeInteger ] ?
+    )
+}
 
 

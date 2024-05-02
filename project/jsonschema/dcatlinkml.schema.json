@@ -1,161 +1,1085 @@
 {
     "$defs": {
-        "Catalog": {
+        "AdmsIdentifier": {
             "additionalProperties": false,
-            "description": "Represents a catalog",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Catalog",
-            "type": "object"
-        },
-        "CatalogCollection": {
-            "additionalProperties": false,
-            "description": "A holder for catalog objects",
-            "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Catalog__identifier_optional"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
-                    },
-                    "type": "object"
-                }
-            },
-            "title": "CatalogCollection",
-            "type": "object"
-        },
-        "Catalog__identifier_optional": {
-            "additionalProperties": false,
-            "description": "Represents a catalog",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
-                }
-            },
-            "required": [],
-            "title": "Catalog",
-            "type": "object"
-        },
-        "NamedThing": {
-            "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
-            "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "NamedThing",
-            "type": "object"
-        },
-        "PersonStatus": {
             "description": "",
-            "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
+            "title": "AdmsIdentifier",
+            "type": "object"
+        },
+        "DatasetinSeries": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dcat_inSeries": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDatasetSeries"
+                    },
+                    "type": "array"
+                },
+                "dcat_next": {
+                    "items": {
+                        "$ref": "#/$defs/DatasetinSeries"
+                    },
+                    "type": "array"
+                },
+                "dcat_prev": {
+                    "items": {
+                        "$ref": "#/$defs/DatasetinSeries"
+                    },
+                    "type": "array"
+                },
+                "dct_accuralPeriodicity": {
+                    "items": {
+                        "$ref": "#/$defs/DctFrequency"
+                    },
+                    "type": "array"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "dct_description",
+                "dct_title"
             ],
-            "title": "PersonStatus",
-            "type": "string"
+            "title": "DatasetinSeries",
+            "type": "object"
+        },
+        "DcatCatalog": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dcat_catalog": {
+                    "items": {
+                        "$ref": "#/$defs/DcatCatalog"
+                    },
+                    "type": "array"
+                },
+                "dcat_dataset": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataset"
+                    },
+                    "type": "array"
+                },
+                "dcat_record": {
+                    "items": {
+                        "$ref": "#/$defs/DcatCatalogRecord"
+                    },
+                    "type": "array"
+                },
+                "dcat_service": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataService"
+                    },
+                    "type": "array"
+                },
+                "dcat_themeTaxonomy": {
+                    "items": {
+                        "$ref": "#/$defs/SkosConcept"
+                    },
+                    "type": "array"
+                },
+                "dct_creator": {
+                    "$ref": "#/$defs/FoafAgent"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_hasPart": {
+                    "items": {
+                        "$ref": "#/$defs/DcatCatalog"
+                    },
+                    "type": "array"
+                },
+                "dct_isPart": {
+                    "$ref": "#/$defs/DcatCatalog"
+                },
+                "dct_issued": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_language": {
+                    "items": {
+                        "$ref": "#/$defs/DctLinguisticSystem"
+                    },
+                    "type": "array"
+                },
+                "dct_license": {
+                    "$ref": "#/$defs/DctLicenseDocument"
+                },
+                "dct_modified": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_publisher": {
+                    "$ref": "#/$defs/FoafAgent"
+                },
+                "dct_rights": {
+                    "$ref": "#/$defs/DctRightsStatement"
+                },
+                "dct_spatial": {
+                    "items": {
+                        "$ref": "#/$defs/DctLocation"
+                    },
+                    "type": "array"
+                },
+                "dct_temporal": {
+                    "items": {
+                        "$ref": "#/$defs/DctPeriodOfTime"
+                    },
+                    "type": "array"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "foaf_homepage": {
+                    "$ref": "#/$defs/FoafDocument"
+                }
+            },
+            "required": [
+                "dct_description",
+                "dct_title",
+                "dct_publisher"
+            ],
+            "title": "DcatCatalog",
+            "type": "object"
+        },
+        "DcatCatalogRecord": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "adms_status": {
+                    "$ref": "#/$defs/SkosConcept"
+                },
+                "dct_conformsTo": {
+                    "items": {
+                        "$ref": "#/$defs/DctStandard"
+                    },
+                    "type": "array"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_issued": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_language": {
+                    "items": {
+                        "$ref": "#/$defs/DctLinguisticSystem"
+                    },
+                    "type": "array"
+                },
+                "dct_modified": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_source": {
+                    "$ref": "#/$defs/DcatCatalogRecord"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "foaf_primaryTopic": {
+                    "$ref": "#/$defs/DcatResource"
+                }
+            },
+            "required": [
+                "dct_modified",
+                "foaf_primaryTopic"
+            ],
+            "title": "DcatCatalogRecord",
+            "type": "object"
+        },
+        "DcatDataService": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dcat_endpointDescription": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsResource"
+                    },
+                    "type": "array"
+                },
+                "dcat_endpointURL": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsResource"
+                    },
+                    "type": "array"
+                },
+                "dcat_servesDataset": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataset"
+                    },
+                    "type": "array"
+                },
+                "dct_accessRights": {
+                    "$ref": "#/$defs/DctRightsStatement"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_format": {
+                    "items": {
+                        "$ref": "#/$defs/DctMediaTypeOrExtent"
+                    },
+                    "type": "array"
+                },
+                "dct_license": {
+                    "$ref": "#/$defs/DctLicenseDocument"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "dcat_endpointURL",
+                "dct_title"
+            ],
+            "title": "DcatDataService",
+            "type": "object"
+        },
+        "DcatDataset": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "adms_identifier": {
+                    "items": {
+                        "$ref": "#/$defs/AdmsIdentifier"
+                    },
+                    "type": "array"
+                },
+                "adms_sample": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDistribution"
+                    },
+                    "type": "array"
+                },
+                "adms_versionNotes": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dcat_distribution": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDistribution"
+                    },
+                    "type": "array"
+                },
+                "dcat_hasVersion": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataset"
+                    },
+                    "type": "array"
+                },
+                "dcat_isVersionOf": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataset"
+                    },
+                    "type": "array"
+                },
+                "dcat_landingPage": {
+                    "items": {
+                        "$ref": "#/$defs/FoafDocument"
+                    },
+                    "type": "array"
+                },
+                "dcat_qualifiedRelation": {
+                    "items": {
+                        "$ref": "#/$defs/DcatRelationship"
+                    },
+                    "type": "array"
+                },
+                "dcat_spatialResolutionInMeters": {
+                    "items": {
+                        "$ref": "#/$defs/XsdDecimal"
+                    },
+                    "type": "array"
+                },
+                "dcat_temporalResolution": {
+                    "items": {
+                        "$ref": "#/$defs/XsdDuration"
+                    },
+                    "type": "array"
+                },
+                "dcat_themeTaxonomy": {
+                    "items": {
+                        "$ref": "#/$defs/SkosConcept"
+                    },
+                    "type": "array"
+                },
+                "dcat_version": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_accessRights": {
+                    "$ref": "#/$defs/DctFrequency"
+                },
+                "dct_accuralPeriodicity": {
+                    "$ref": "#/$defs/DctFrequency"
+                },
+                "dct_conformsTo": {
+                    "items": {
+                        "$ref": "#/$defs/DctStandard"
+                    },
+                    "type": "array"
+                },
+                "dct_contactPoint": {
+                    "items": {
+                        "$ref": "#/$defs/VcardKind"
+                    },
+                    "type": "array"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_identifier": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_isReferencedBy": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsResource"
+                    },
+                    "type": "array"
+                },
+                "dct_issued": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_keyword": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_language": {
+                    "items": {
+                        "$ref": "#/$defs/DctLinguisticSystem"
+                    },
+                    "type": "array"
+                },
+                "dct_modified": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_provenance": {
+                    "items": {
+                        "$ref": "#/$defs/DctProvenanceStatement"
+                    },
+                    "type": "array"
+                },
+                "dct_publisher": {
+                    "$ref": "#/$defs/FoafAgent"
+                },
+                "dct_relation": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsResource"
+                    },
+                    "type": "array"
+                },
+                "dct_source": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataset"
+                    },
+                    "type": "array"
+                },
+                "dct_spatial": {
+                    "items": {
+                        "$ref": "#/$defs/DctLocation"
+                    },
+                    "type": "array"
+                },
+                "dct_temporal": {
+                    "items": {
+                        "$ref": "#/$defs/DctPeriodOfTime"
+                    },
+                    "type": "array"
+                },
+                "dct_theme": {
+                    "items": {
+                        "$ref": "#/$defs/SkosConcept"
+                    },
+                    "type": "array"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_type": {
+                    "$ref": "#/$defs/SkosConcept"
+                },
+                "foaf_page": {
+                    "items": {
+                        "$ref": "#/$defs/FoafDocument"
+                    },
+                    "type": "array"
+                },
+                "owl_versionInfo": {
+                    "$ref": "#/$defs/RdfsLiteral"
+                },
+                "prov_qualifiedAttribution": {
+                    "items": {
+                        "$ref": "#/$defs/ProvAttribution"
+                    },
+                    "type": "array"
+                },
+                "prov_wasGeneratedBy": {
+                    "items": {
+                        "$ref": "#/$defs/ProvActivity"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "dct_description",
+                "dct_title"
+            ],
+            "title": "DcatDataset",
+            "type": "object"
+        },
+        "DcatDatasetSeries": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dcat_contactPoint": {
+                    "items": {
+                        "$ref": "#/$defs/VcardKind"
+                    },
+                    "type": "array"
+                },
+                "dcat_first": {
+                    "items": {
+                        "$ref": "#/$defs/DatasetinSeries"
+                    },
+                    "type": "array"
+                },
+                "dcat_last": {
+                    "items": {
+                        "$ref": "#/$defs/DatasetinSeries"
+                    },
+                    "type": "array"
+                },
+                "dcat_seriesMember": {
+                    "items": {
+                        "$ref": "#/$defs/DatasetinSeries"
+                    },
+                    "type": "array"
+                },
+                "dct_accuralPeriodicity": {
+                    "$ref": "#/$defs/DctFrequency"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_issued": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_modified": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_publisher": {
+                    "$ref": "#/$defs/FoafAgent"
+                },
+                "dct_spatial": {
+                    "items": {
+                        "$ref": "#/$defs/DctLocation"
+                    },
+                    "type": "array"
+                },
+                "dct_temporal": {
+                    "items": {
+                        "$ref": "#/$defs/DctPeriodOfTime"
+                    },
+                    "type": "array"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "dct_description",
+                "dct_title"
+            ],
+            "title": "DcatDatasetSeries",
+            "type": "object"
+        },
+        "DcatDistribution": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "adms_status": {
+                    "$ref": "#/$defs/SkosConcept"
+                },
+                "dcat_accessURL": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsResource"
+                    },
+                    "type": "array"
+                },
+                "dcat_accessesService": {
+                    "items": {
+                        "$ref": "#/$defs/DcatDataService"
+                    },
+                    "type": "array"
+                },
+                "dcat_byteSize": {
+                    "$ref": "#/$defs/XsdNonNegativInteger"
+                },
+                "dcat_compressFormat": {
+                    "$ref": "#/$defs/DctMediaType"
+                },
+                "dcat_downloadURL": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsResource"
+                    },
+                    "type": "array"
+                },
+                "dcat_mediaType": {
+                    "$ref": "#/$defs/DctMediaType"
+                },
+                "dcat_packageFormat": {
+                    "$ref": "#/$defs/DctMediaType"
+                },
+                "dcat_spatialResolutionInMeters": {
+                    "items": {
+                        "$ref": "#/$defs/XsdDecimal"
+                    },
+                    "type": "array"
+                },
+                "dcat_temporalResolution": {
+                    "items": {
+                        "$ref": "#/$defs/XsdDuration"
+                    },
+                    "type": "array"
+                },
+                "dcatap_availability": {
+                    "$ref": "#/$defs/SkosConcept"
+                },
+                "dct_conformsTo": {
+                    "items": {
+                        "$ref": "#/$defs/DctStandard"
+                    },
+                    "type": "array"
+                },
+                "dct_description": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "dct_format": {
+                    "$ref": "#/$defs/DctMediaTypeOrExtent"
+                },
+                "dct_issued": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_language": {
+                    "items": {
+                        "$ref": "#/$defs/DctLinguisticSystem"
+                    },
+                    "type": "array"
+                },
+                "dct_license": {
+                    "$ref": "#/$defs/DctLicenseDocument"
+                },
+                "dct_modified": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dct_rights": {
+                    "$ref": "#/$defs/DctRightsStatement"
+                },
+                "dct_title": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                },
+                "foaf_page": {
+                    "items": {
+                        "$ref": "#/$defs/FoafDocument"
+                    },
+                    "type": "array"
+                },
+                "odrl_hasPolicy": {
+                    "$ref": "#/$defs/OdrlHasPolicy"
+                },
+                "spdx_checksum": {
+                    "$ref": "#/$defs/SpdxChecksum"
+                }
+            },
+            "required": [
+                "dcat_accessURL"
+            ],
+            "title": "DcatDistribution",
+            "type": "object"
+        },
+        "DcatRelationship": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DcatRelationship",
+            "type": "object"
+        },
+        "DcatResource": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DcatResource",
+            "type": "object"
+        },
+        "DctFrequency": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctFrequency",
+            "type": "object"
+        },
+        "DctLicenseDocument": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dct_type": {
+                    "items": {
+                        "$ref": "#/$defs/SkosConcept"
+                    },
+                    "type": "array"
+                }
+            },
+            "title": "DctLicenseDocument",
+            "type": "object"
+        },
+        "DctLinguisticSystem": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctLinguisticSystem",
+            "type": "object"
+        },
+        "DctLocation": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dcat_bbox": {
+                    "$ref": "#/$defs/RdfsLiteral"
+                },
+                "dcat_centroid": {
+                    "$ref": "#/$defs/RdfsLiteral"
+                },
+                "lcon_geometry": {
+                    "$ref": "#/$defs/LconGeometry"
+                }
+            },
+            "title": "DctLocation",
+            "type": "object"
+        },
+        "DctMediaType": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctMediaType",
+            "type": "object"
+        },
+        "DctMediaTypeOrExtent": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctMediaTypeOrExtent",
+            "type": "object"
+        },
+        "DctPeriodOfTime": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dcat_endDate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "dcat_startDate": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "time_hasBeginning": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                },
+                "time_hasEnd": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/XsdDate"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdDateTime"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYear"
+                        },
+                        {
+                            "$ref": "#/$defs/XsdGYearMonth"
+                        }
+                    ],
+                    "type": "string"
+                }
+            },
+            "title": "DctPeriodOfTime",
+            "type": "object"
+        },
+        "DctProvenanceStatement": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctProvenanceStatement",
+            "type": "object"
+        },
+        "DctRightsStatement": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctRightsStatement",
+            "type": "object"
+        },
+        "DctStandard": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "DctStandard",
+            "type": "object"
+        },
+        "FoafAgent": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "dct_type": {
+                    "$ref": "#/$defs/SkosConcept"
+                },
+                "foaf_name": {
+                    "items": {
+                        "$ref": "#/$defs/RdfsLiteral"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "foaf_name"
+            ],
+            "title": "FoafAgent",
+            "type": "object"
+        },
+        "FoafDocument": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "FoafDocument",
+            "type": "object"
+        },
+        "LconGeometry": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "LconGeometry",
+            "type": "object"
+        },
+        "OdrlHasPolicy": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "OdrlHasPolicy",
+            "type": "object"
+        },
+        "ProvActivity": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ProvActivity",
+            "type": "object"
+        },
+        "ProvAttribution": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "ProvAttribution",
+            "type": "object"
+        },
+        "RdfsLiteral": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "RdfsLiteral",
+            "type": "object"
+        },
+        "RdfsResource": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "RdfsResource",
+            "type": "object"
+        },
+        "SkosConcept": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "SkosConcept",
+            "type": "object"
+        },
+        "SpdxChecksum": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "SpdxChecksum",
+            "type": "object"
+        },
+        "VcardKind": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "VcardKind",
+            "type": "object"
+        },
+        "XsdDate": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdDate",
+            "type": "object"
+        },
+        "XsdDateTime": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdDateTime",
+            "type": "object"
+        },
+        "XsdDecimal": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdDecimal",
+            "type": "object"
+        },
+        "XsdDuration": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdDuration",
+            "type": "object"
+        },
+        "XsdGYear": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdGYear",
+            "type": "object"
+        },
+        "XsdGYearMonth": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdGYearMonth",
+            "type": "object"
+        },
+        "XsdNonNegativInteger": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "XsdNonNegativInteger",
+            "type": "object"
         }
     },
-    "$id": "https://w3id.org/HendrikBorgelt/DCATlinkML",
+    "$id": "https://ndfi4cat.de/linkml/tests/DCATap",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A holder for catalog objects",
     "metamodel_version": "1.7.0",
-    "properties": {
-        "entries": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Catalog__identifier_optional"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
-            },
-            "type": "object"
-        }
-    },
-    "title": "DCATlinkML",
+    "title": "DCATap_LinkML_Template",
     "type": "object",
     "version": null
 }

@@ -1,23 +1,156 @@
-// Represents a catalog
-message Catalog
+message DatasetinSeries
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+ repeated  rdfsLiteral dctDescription = 0
+ repeated  rdfsLiteral dctTitle = 0
+ repeated  dctFrequency dctAccuralPeriodicity = 0
+ repeated  datasetinSeries dcatPrev = 0
+ repeated  datasetinSeries dcatNext = 0
+ repeated  dcatDatasetSeries dcatInSeries = 0
  }
-// A holder for catalog objects
-message CatalogCollection
+message DcatCatalog
  {
- repeated  catalog entries = 0
+ repeated  rdfsLiteral dctDescription = 0
+ repeated  rdfsLiteral dctTitle = 0
+ repeated  skosConcept dcatThemeTaxonomy = 0
+  string dctIssued = 0
+ repeated  dctLinguisticSystem dctLanguage = 0
+  string dctModified = 0
+  foafDocument foafHomepage = 0
+  dctRightsStatement dctRights = 0
+  foafAgent dctPublisher = 0
+  dctLicenseDocument dctLicense = 0
+ repeated  dcatDataService dcatService = 0
+ repeated  dctLocation dctSpatial = 0
+ repeated  dcatDataset dcatDataset = 0
+ repeated  dcatCatalog dcatCatalog = 0
+ repeated  dcatCatalog dctHasPart = 0
+  dcatCatalog dctIsPart = 0
+ repeated  dctPeriodOfTime dctTemporal = 0
+ repeated  dcatCatalogRecord dcatRecord = 0
+  foafAgent dctCreator = 0
  }
-// A generic grouping for any identifiable entity
-message NamedThing
+message DcatCatalogRecord
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
+  string dctModified = 0
+  skosConcept admsStatus = 0
+ repeated  dctStandard dctConformsTo = 0
+  string dctIssued = 0
+ repeated  rdfsLiteral dctDescription = 0
+ repeated  dctLinguisticSystem dctLanguage = 0
+ repeated  rdfsLiteral dctTitle = 0
+  dcatResource foafPrimaryTopic = 0
+  dcatCatalogRecord dctSource = 0
+ }
+message DcatDataService
+ {
+ repeated  rdfsResource dcatEndpointURL = 0
+ repeated  rdfsLiteral dctTitle = 0
+ repeated  rdfsResource dcatEndpointDescription = 0
+  dctRightsStatement dctAccessRights = 0
+ repeated  rdfsLiteral dctDescription = 0
+ repeated  dctMediaTypeOrExtent dctFormat = 0
+ repeated  dcatDataset dcatServesDataset = 0
+  dctLicenseDocument dctLicense = 0
+ }
+message DcatDataset
+ {
+ repeated  rdfsLiteral dctDescription = 0
+ repeated  rdfsLiteral dctTitle = 0
+ repeated  vcardKind dctContactPoint = 0
+ repeated  rdfsLiteral dctKeyword = 0
+ repeated  skosConcept dctTheme = 0
+ repeated  admsIdentifier admsIdentifier = 0
+ repeated  rdfsLiteral admsVersionNotes = 0
+ repeated  foafDocument dcatLandingPage = 0
+ repeated  dcatRelationship dcatQualifiedRelation = 0
+ repeated  xsdDecimal dcatSpatialResolutionInMeters = 0
+ repeated  xsdDuration dcatTemporalResolution = 0
+ repeated  rdfsLiteral dcatVersion = 0
+  dctFrequency dctAccessRights = 0
+  dctFrequency dctAccuralPeriodicity = 0
+ repeated  dctStandard dctConformsTo = 0
+ repeated  rdfsLiteral dctIdentifier = 0
+ repeated  rdfsResource dctIsReferencedBy = 0
+  string dctIssued = 0
+ repeated  dctLinguisticSystem dctLanguage = 0
+  string dctModified = 0
+ repeated  dctProvenanceStatement dctProvenance = 0
+ repeated  rdfsResource dctRelation = 0
+  skosConcept dctType = 0
+ repeated  foafDocument foafPage = 0
+  rdfsLiteral owlVersionInfo = 0
+ repeated  provAttribution provQualifiedAttribution = 0
+ repeated  provActivity provWasGeneratedBy = 0
+ repeated  skosConcept dcatThemeTaxonomy = 0
+ repeated  dctLocation dctSpatial = 0
+ repeated  dctPeriodOfTime dctTemporal = 0
+  foafAgent dctPublisher = 0
+ repeated  dcatDistribution dcatDistribution = 0
+ repeated  dcatDataset dcatHasVersion = 0
+ repeated  dcatDataset dcatIsVersionOf = 0
+ repeated  dcatDataset dctSource = 0
+ repeated  dcatDistribution admsSample = 0
+ }
+message DcatDatasetSeries
+ {
+ repeated  rdfsLiteral dctDescription = 0
+ repeated  rdfsLiteral dctTitle = 0
+ repeated  vcardKind dcatContactPoint = 0
+  dctFrequency dctAccuralPeriodicity = 0
+  string dctIssued = 0
+  string dctModified = 0
+ repeated  dctLocation dctSpatial = 0
+ repeated  dctPeriodOfTime dctTemporal = 0
+  foafAgent dctPublisher = 0
+ repeated  datasetinSeries dcatSeriesMember = 0
+ repeated  datasetinSeries dcatFirst = 0
+ repeated  datasetinSeries dcatLast = 0
+ }
+message DcatDistribution
+ {
+ repeated  rdfsResource dcatAccessURL = 0
+  skosConcept dcatapAvailability = 0
+ repeated  rdfsLiteral dctDescription = 0
+  dctMediaTypeOrExtent dctFormat = 0
+  skosConcept admsStatus = 0
+  xsdNonNegativInteger dcatByteSize = 0
+  dctMediaType dcatCompressFormat = 0
+ repeated  rdfsResource dcatDownloadURL = 0
+  dctMediaType dcatMediaType = 0
+  dctMediaType dcatPackageFormat = 0
+ repeated  xsdDecimal dcatSpatialResolutionInMeters = 0
+ repeated  xsdDuration dcatTemporalResolution = 0
+ repeated  dctStandard dctConformsTo = 0
+  string dctIssued = 0
+ repeated  dctLinguisticSystem dctLanguage = 0
+  string dctModified = 0
+  dctRightsStatement dctRights = 0
+ repeated  rdfsLiteral dctTitle = 0
+ repeated  foafDocument foafPage = 0
+  odrlHasPolicy odrlHasPolicy = 0
+  spdxChecksum spdxChecksum = 0
+  dctLicenseDocument dctLicense = 0
+ repeated  dcatDataService dcatAccessesService = 0
+ }
+message DctLicenseDocument
+ {
+ repeated  skosConcept dctType = 0
+ }
+message DctLocation
+ {
+  rdfsLiteral dcatBbox = 0
+  rdfsLiteral dcatCentroid = 0
+  lconGeometry lconGeometry = 0
+ }
+message DctPeriodOfTime
+ {
+  string dcatEndDate = 0
+  string dcatStartDate = 0
+  string timeHasBeginning = 0
+  string timeHasEnd = 0
+ }
+message FoafAgent
+ {
+ repeated  rdfsLiteral foafName = 0
+  skosConcept dctType = 0
  }

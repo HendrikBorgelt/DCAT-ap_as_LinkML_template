@@ -1,182 +1,1513 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
-@prefix dcatlinkml: <https://w3id.org/HendrikBorgelt/DCATlinkML/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix DCATap_LinkML_Template_from_NFDI4Cat: <https://ndfi4cat.de/linkml/tests/DCATap> .
+@prefix adms: <http://www.w3.org/ns/adms> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lcon: <http://www.w3.org/ns/locn> .
 @prefix linkml: <https://w3id.org/linkml/> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov1: <http://www.w3.org/ns/prov> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema1: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix spdx: <http://spdx.org/rdf/terms> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-dcatlinkml:CatalogCollection a owl:Class,
+<https://ndfi4cat.de/linkml/tests/DCATap/:AdmsIdentifier> a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "catalogCollection" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dcatlinkml:Catalog ;
-            owl:onProperty dcatlinkml:entries ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:entries ] ;
-    skos:definition "A holder for catalog objects" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "adms_Identifier" ;
+    skos:exactMatch adms:identifier ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:Catalog a owl:Class,
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatDatasetSeries> a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "catalog" ;
+    rdfs:label "dcat_DatasetSeries" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:vital_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty dcatlinkml:age_in_years ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_first> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:primary_email ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:birth_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatlinkml:PersonStatus ;
-            owl:onProperty dcatlinkml:vital_status ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:vital_status ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:primary_email ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:birth_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:onDatatype xsd:string ;
-                    owl:withRestrictions ( [ xsd:pattern "^\\S+@[\\S+\\.]+\\S+" ] ) ] ;
-            owl:onProperty dcatlinkml:primary_email ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_last> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:age_in_years ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_seriesMember> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatlinkml:birth_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:age_in_years ],
-        dcatlinkml:NamedThing ;
-    skos:definition "Represents a catalog" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
-
-dcatlinkml:NamedThing a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "NamedThing" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatlinkml:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatlinkml:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatlinkml:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatlinkml:id ],
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DatasetinSeries> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_first> ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty dcatlinkml:id ],
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafAgent> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatlinkml:description ] ;
-    skos:definition "A generic grouping for any identifiable entity" ;
-    skos:exactMatch schema1:Thing ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctPeriodOfTime> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DatasetinSeries> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_seriesMember> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:VcardKind> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_contactPoint> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_contactPoint> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctFrequency> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLocation> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DatasetinSeries> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_last> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ] ;
+    skos:exactMatch dcat:DatasetSeries ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-PATO:0001421 a owl:Class,
-        dcatlinkml:PersonStatus ;
-    rdfs:label "ALIVE" ;
-    rdfs:subClassOf dcatlinkml:PersonStatus .
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatRelationship> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_Relationship" ;
+    skos:exactMatch dcat:Relationship ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-PATO:0001422 a owl:Class,
-        dcatlinkml:PersonStatus ;
-    rdfs:label "DEAD" ;
-    rdfs:subClassOf dcatlinkml:PersonStatus .
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatResource> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_Resource" ;
+    skos:exactMatch dcat:Resource ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-<https://w3id.org/HendrikBorgelt/DCATlinkML/PersonStatus#UNKNOWN> a owl:Class,
-        dcatlinkml:PersonStatus ;
-    rdfs:label "UNKNOWN" ;
-    rdfs:subClassOf dcatlinkml:PersonStatus .
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctProvenanceStatement> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_ProvenanceStatement" ;
+    skos:exactMatch dct:ProvenanceStatement ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:entries a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:LconGeometry> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "lcon_Geometry" ;
+    skos:exactMatch lcon:Geometry ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:OdrlHasPolicy> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "odrl_hasPolicy" ;
+    skos:exactMatch odrl:hasPolicy ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:ProvActivity> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "prov_Activity" ;
+    skos:exactMatch prov1:Activity ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:ProvAttribution> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "prov_Attribution" ;
+    skos:exactMatch prov1:Attribution ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:SpdxChecksum> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "spdx_Checksum" ;
+    skos:exactMatch spdx:Checksum ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdNonNegativInteger> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_nonNegativInteger" ;
+    skos:exactMatch xsd:nonNegativeInteger ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalogRecord> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_CatalogRecord" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_source> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLinguisticSystem> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctStandard> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_source> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_primaryTopic> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_primaryTopic> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_primaryTopic> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalogRecord> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_source> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> ] ;
+    skos:exactMatch dcat:CatalogRecord ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataService> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_DataService" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_servesDataset> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataset> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_servesDataset> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctRightsStatement> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endpointDescription> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endpointURL> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaTypeOrExtent> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_format> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLicenseDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endpointDescription> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_format> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endpointURL> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ] ;
+    skos:exactMatch dcat:DataService ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatDistribution> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_Distribution" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SpdxChecksum> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:spdx_checksum> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcatap_availability> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:odrl_hasPolicy> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDecimal> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_spatialResolutionInMeters> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_temporalResolution> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_byteSize> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaType> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_compressFormat> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_packageFormat> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLicenseDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_mediaType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_downloadURL> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_mediaType> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaTypeOrExtent> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_format> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_compressFormat> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_byteSize> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:odrl_hasPolicy> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:spdx_checksum> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:spdx_checksum> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_packageFormat> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLinguisticSystem> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:OdrlHasPolicy> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:odrl_hasPolicy> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_accessURL> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcatap_availability> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_format> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_format> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaType> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_mediaType> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_accessesService> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_page> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDuration> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_temporalResolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctStandard> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaType> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_packageFormat> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_spatialResolutionInMeters> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_downloadURL> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_accessURL> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataService> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_accessesService> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_page> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_compressFormat> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcatap_availability> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctRightsStatement> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:XsdNonNegativInteger> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_byteSize> ] ;
+    skos:exactMatch dcat:Distribution ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaTypeOrExtent> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_MediaTypeOrExtent" ;
+    skos:exactMatch dct:MediaTypeOrExtent ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:VcardKind> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "vcard_Kind" ;
+    skos:exactMatch vcard:Kind ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdDecimal> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_decimal" ;
+    skos:exactMatch xsd:decimal ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdDuration> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_duration" ;
+    skos:exactMatch xsd:duration ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:adms_identifier> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "entries" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "adms_identifier" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:age_in_years a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:adms_sample> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "age_in_years" ;
-    rdfs:range linkml:Integer ;
-    skos:definition "Number of years since birth" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "adms_sample" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:birth_date a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:adms_versionNotes> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "birth_date" ;
-    rdfs:range linkml:Date ;
-    skos:definition "Date on which a person is born" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "adms_versionNotes" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:description a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_accessURL> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "description" ;
-    skos:definition "A human-readable description for a thing" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "dcat_accessURL" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:id a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_accessesService> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "id" ;
-    rdfs:range linkml:Uriorcurie ;
-    skos:definition "A unique identifier for a thing" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "dcat_accessesService" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:name a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_catalog> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "name" ;
-    skos:definition "A human-readable name for a thing" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "dcat_catalog" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:primary_email a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_contactPoint> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "primary_email" ;
-    skos:definition "The main email address of a person" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "dcat_contactPoint" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:vital_status a owl:ObjectProperty,
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_dataset> a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "vital_status" ;
-    rdfs:range dcatlinkml:PersonStatus ;
-    skos:definition "living or dead status" ;
-    skos:inScheme <https://w3id.org/HendrikBorgelt/DCATlinkML> .
+    rdfs:label "dcat_dataset" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-dcatlinkml:PersonStatus a owl:Class,
-        linkml:EnumDefinition ;
-    owl:unionOf ( PATO:0001421 PATO:0001422 <https://w3id.org/HendrikBorgelt/DCATlinkML/PersonStatus#UNKNOWN> ) ;
-    linkml:permissible_values PATO:0001421,
-        PATO:0001422,
-        <https://w3id.org/HendrikBorgelt/DCATlinkML/PersonStatus#UNKNOWN> .
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_distribution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_distribution" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
 
-<https://w3id.org/HendrikBorgelt/DCATlinkML> a owl:Ontology ;
-    rdfs:label "DCATlinkML" ;
-    dcterms:license "MIT" ;
-    dcterms:title "DCATlinkML" ;
-    rdfs:seeAlso <https://HendrikBorgelt.github.io/DCATlinkML> ;
-    skos:definition "test" .
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_downloadURL> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_downloadURL" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endpointDescription> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_endpointDescription" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endpointURL> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_endpointURL" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_first> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_first" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_hasVersion> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_hasVersion" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_inSeries> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_inSeries" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_isVersionOf> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_isVersionOf" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_landingPage> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_landingPage" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_last> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_last" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_next> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_next" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_prev> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_prev" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_qualifiedRelation> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_qualifiedRelation" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_record> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_record" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_seriesMember> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_seriesMember" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_servesDataset> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_servesDataset" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_service> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_service" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_version> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_version" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_contactPoint> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_contactPoint" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_hasPart> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_hasPart" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_identifier> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_identifier" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_isReferencedBy> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_isReferencedBy" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_keyword> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_keyword" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_provenance> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_provenance" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_relation> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_relation" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_theme> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_theme" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:foaf_name> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "foaf_name" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:prov_qualifiedAttribution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "prov_qualifiedAttribution" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:prov_wasGeneratedBy> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "prov_wasGeneratedBy" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalog> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_Catalog" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_dataset> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLocation> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_homepage> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLicenseDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctPeriodOfTime> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_catalog> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalogRecord> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_record> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_creator> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataset> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_dataset> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafAgent> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataService> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_service> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_hasPart> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_record> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_themeTaxonomy> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafAgent> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_creator> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalog> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_isPart> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLinguisticSystem> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalog> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_catalog> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_isPart> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_service> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_homepage> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_homepage> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_creator> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_themeTaxonomy> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatCatalog> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_hasPart> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctRightsStatement> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_isPart> ] ;
+    skos:exactMatch dcat:Catalog ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctLicenseDocument> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_LicenseDocument" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ] ;
+    skos:exactMatch dct:LicenseDocument ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctLocation> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_Location" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:LconGeometry> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:lcon_geometry> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:lcon_geometry> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_bbox> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:lcon_geometry> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_bbox> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_centroid> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_centroid> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_centroid> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_bbox> ] ;
+    skos:exactMatch dct:Location ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctMediaType> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_MediaType" ;
+    skos:exactMatch dct:MediaType ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctPeriodOfTime> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_PeriodOfTime" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:time_hasEnd> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:time_hasEnd> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:time_hasBeginning> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endDate> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_startDate> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:time_hasBeginning> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_startDate> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:time_hasBeginning> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:time_hasEnd> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_startDate> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endDate> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endDate> ] ;
+    skos:exactMatch dct:PeriodOfTime ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctRightsStatement> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_RightsStatement" ;
+    skos:exactMatch dct:RightsStatement ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctStandard> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_Standard" ;
+    skos:exactMatch dct:Standard ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_bbox> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_bbox" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_byteSize> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_byteSize" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_centroid> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_centroid" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_compressFormat> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_compressFormat" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_endDate> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_endDate" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_mediaType> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_mediaType" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_packageFormat> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_packageFormat" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_startDate> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_startDate" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcatap_availability> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcatap_availability" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_creator> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_creator" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_isPart> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_isPart" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:foaf_homepage> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "foaf_homepage" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:foaf_primaryTopic> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "foaf_primaryTopic" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:lcon_geometry> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "lcon_geometry" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:odrl_hasPolicy> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "odrl_hasPolicy" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:owl_versionInfo> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "owl_versionInfo" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:spdx_checksum> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "spdx_checksum" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:time_hasBeginning> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "time_hasBeginning" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:time_hasEnd> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "time_hasEnd" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctFrequency> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_Frequency" ;
+    skos:exactMatch dct:Frequency ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DctLinguisticSystem> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dct_LinguisticSystem" ;
+    skos:exactMatch dct:LinguisticSystem ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:FoafAgent> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "foaf_agent" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_name> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ] ;
+    skos:exactMatch foaf:agent ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:FoafDocument> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "foaf_Document" ;
+    skos:exactMatch foaf:Document ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_spatialResolutionInMeters> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_spatialResolutionInMeters" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_temporalResolution> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_temporalResolution" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dcat_themeTaxonomy> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dcat_themeTaxonomy" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:foaf_page> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "foaf_page" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DatasetinSeries> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DatasetinSeries" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctFrequency> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DatasetinSeries> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_prev> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_prev> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DatasetinSeries> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_next> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_inSeries> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDatasetSeries> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_inSeries> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_next> ] ;
+    skos:exactMatch dcatap:DatasetinSeries ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataset> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "dcat_Dataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_spatialResolutionInMeters> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctProvenanceStatement> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_provenance> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_keyword> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_landingPage> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataset> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_hasVersion> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:owl_versionInfo> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_sample> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:AdmsIdentifier> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_identifier> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLocation> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_identifier> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_page> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_contactPoint> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDistribution> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_distribution> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_version> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_themeTaxonomy> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataset> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_isVersionOf> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:foaf_page> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_keyword> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:owl_versionInfo> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:prov_qualifiedAttribution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctStandard> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:ProvAttribution> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:prov_qualifiedAttribution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDecimal> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_spatialResolutionInMeters> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDistribution> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_sample> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_relation> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_source> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctFrequency> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_identifier> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_hasVersion> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctPeriodOfTime> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_qualifiedRelation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:owl_versionInfo> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_isReferencedBy> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_distribution> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_relation> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_identifier> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_versionNotes> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_themeTaxonomy> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_temporalResolution> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatRelationship> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_qualifiedRelation> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_provenance> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:unionOf ( <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> <https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> ) ] ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_theme> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafAgent> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_version> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_isVersionOf> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctLinguisticSystem> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:FoafDocument> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_landingPage> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DcatDataset> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_source> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:DctFrequency> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:VcardKind> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_contactPoint> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:adms_versionNotes> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:ProvActivity> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:prov_wasGeneratedBy> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:XsdDuration> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dcat_temporalResolution> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_isReferencedBy> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_theme> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://ndfi4cat.de/linkml/tests/DCATap/:prov_wasGeneratedBy> ] ;
+    skos:exactMatch dcat:Dataset ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_format> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_format" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_source> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_source" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:RdfsResource> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "rdfs_Resource" ;
+    skos:exactMatch rdfs:Resource ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:adms_status> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "adms_status" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_accessRights> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_accessRights" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_conformsTo> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_conformsTo" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_rights> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_rights" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_spatial> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_spatial" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_temporal> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_temporal" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_accuralPeriodicity> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_accuralPeriodicity" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_language> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_language" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_type> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_type" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:SkosConcept> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "skos_Concept" ;
+    skos:exactMatch skos:Concept ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_license> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_license" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_publisher> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_publisher" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdDate> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_date" ;
+    skos:exactMatch xsd:date ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdDateTime> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_dateTime" ;
+    skos:exactMatch xsd:dateTime ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYear> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_gYear" ;
+    skos:exactMatch xsd:gYear ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:XsdGYearMonth> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "xsd_gYearMonth" ;
+    skos:exactMatch xsd:gYearMonth ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_description> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_description" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_title> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_title" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_issued> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_issued" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:dct_modified> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dct_modified" ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+<https://ndfi4cat.de/linkml/tests/DCATap/:RdfsLiteral> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "rdfs_Literal" ;
+    skos:exactMatch rdfs:Literal ;
+    skos:inScheme DCATap_LinkML_Template_from_NFDI4Cat: .
+
+DCATap_LinkML_Template_from_NFDI4Cat: a owl:Ontology ;
+    rdfs:label "DCATap_LinkML_Template" .
 
