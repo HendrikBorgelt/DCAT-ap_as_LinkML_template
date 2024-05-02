@@ -1,0 +1,11 @@
+{
+   "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "biolink": "https://w3id.org/biolink/",
+   "dcatlinkml": "https://w3id.org/HendrikBorgelt/DCATlinkML/",
+   "example": "https://example.org/",
+   "linkml": "https://w3id.org/linkml/",
+   "schema": "http://schema.org/",
+   "NamedThing": {
+      "@id": "schema:Thing"
+   }
+}
