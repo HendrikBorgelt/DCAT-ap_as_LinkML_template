@@ -4,7 +4,7 @@ test
 
 ## Website
 
-[https://hendrikborgelt.github.io/DCATlinkML](https://hendrikborgelt.github.io/DCATlinkML)
+[https://hendrikborgelt.github.io/DCATlinkML](https://hendrikborgelt.github.io/DCAT-ap_as_LinkML_template/)
 
 ## Repository Structure
 
