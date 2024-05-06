@@ -4,7 +4,7 @@ test
 
 ## Website
 
-[https://HendrikBorgelt.github.io/DCATlinkML](https://HendrikBorgelt.github.io/DCATlinkML)
+[https://hendrikborgelt.github.io/DCATlinkML](https://hendrikborgelt.github.io/DCATlinkML)
 
 ## Repository Structure
 
